@@ -153,19 +153,24 @@ void Drone::PlanPath (double angle, double distance, std::vector<Vector3D> &Path
   PathPoints.push_back(Position + flight);
 }
 
+/*!
+* Przedłuż ściężke o daną długość w kierunku w którym zmierza
+* \param[in] distance - długość o którą przedłużamy istniejącą ścieżkę
+* \param[in] PathPoints - wskaźnik na kontener zawierający punkty ścieżki przelotu
+*/
 void Drone::ExtendPath(double distance, std::vector<Vector3D> &PathPoints){
 
   double radians = (Orientation)  * PI/180;
   double T_flight[SIZE] = {cos(radians)*distance, sin(radians)*distance, 0};
   Vector3D flight(T_flight), tmp1, tmp2;
 
-  tmp2 = PathPoints.back();
+  tmp2 = PathPoints.back();   //skopiuj i usuń ostatni punkt
   PathPoints.pop_back();
 
-  tmp1 = PathPoints.back();
+  tmp1 = PathPoints.back();   //skopiuj i usuń przedostatni punkt
   PathPoints.pop_back();
 
-  tmp1 = tmp1 + flight;
+  tmp1 = tmp1 + flight;       //przedłuż je o odpowiedni wektor
   tmp2 = tmp2 + flight;
 
   PathPoints.push_back(tmp1);
@@ -343,16 +348,22 @@ void Drone::GoAround(double radius, PzG::LaczeDoGNUPlota &Lacze){
   VerticalFlight(-80, Lacze);
 }
 
-
+/*!
+* Detekcja kolizji pomiędzy dwoma dronami
+* Drony zostały w tym programie przybliżone jako okręgi o promieniu 10,5
+* Poniższa metoda zakłada, że odległość pomiędzy dronami w płaszczyźnie XY powinna być większa od 23 (dodano trochę luzu)
+* \param[in] drone - Dron jako obiekt sceny
+*
+* \return 1 jeżeli zachodzi kolizja, 0 jeżeli nie
+*/
 bool Drone::DetectCollision(SceneObject *drone){
 
   Drone* drone_cast = static_cast<Drone*>(drone);
 
-  if(this == drone_cast){
+  if(this == drone_cast){     // zeby dron nie sprawdzał kolizji sam ze sobą
     return false;
   }
 
   double distance = sqrt(pow(ReturnPosition()[0] - drone_cast->ReturnPosition()[0], 2) + pow(ReturnPosition()[1] - drone_cast->ReturnPosition()[1], 2));
-
-  return distance <= 24;
+  return distance <= 23;
 }

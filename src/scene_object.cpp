@@ -33,26 +33,33 @@ void SceneObject::CalcGlobalCoords(){
   }
 }
 
-
+/*!
+* Detekcja kolizji pomiędzy obiektem sceny i dronem (w plaszczyźnie XY)
+* Obiekt sceny jest przyblizony jako prostokąt równoległy do osi OX i OY
+* Dron jest przybliżony jako okrąg
+* \param[in] drone - Dron jako obiekt sceny
+*
+* \return 1 jeżeli zachodzi kolizja, 0 jeżeli nie
+*/
 bool SceneObject::DetectCollision(SceneObject *drone){
 
   Drone* drone_cast = static_cast<Drone*>(drone);
 
-  double distance_x = abs(drone_cast->ReturnPosition()[0] - ReturnPosition()[0]);
+  double distance_x = abs(drone_cast->ReturnPosition()[0] - ReturnPosition()[0]);   //wspolrzednie x i y odleglosci miedzy obiektami
   double distance_y = abs(drone_cast->ReturnPosition()[1] - ReturnPosition()[1]);
-  double width = ReturnScale()[0];
+  double width = ReturnScale()[0];    //wymiary przeszkody
   double height = ReturnScale()[1];
   double drone_radius = 12;
 
-  if (distance_x > (width/2 + drone_radius)) return false;
+  if (distance_x > (width/2 + drone_radius)) return false;    //okrag na pewno poza prostokątem
   if (distance_y > (height/2 + drone_radius)) return false;
 
-  if(distance_x <= width/2) return true;
+  if(distance_x <= width/2) return true;    //okrag na pewno wewnatrz prostokata 
   if(distance_y <= height/2) return true;
 
-  double corner_distance = pow(distance_x - width/2, 2) + pow(distance_y - height/2, 2);
+  double corner_distance = sqrt(pow(distance_x - width/2, 2) + pow(distance_y - height/2, 2));  //odleglosc pomiedzy srodkiem okregu a najblizszym wierzcholkiem prostokata
 
-  return (corner_distance <= pow(drone_radius, 2));
+  return (corner_distance <= drone_radius);
 }
 
 

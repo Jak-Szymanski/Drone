@@ -52,12 +52,6 @@ cstdlib
 scene_object.hh
 /home/jakub/Documents/zad5_3-jszymanski36/inc/scene_object.hh
 
-/home/jakub/Documents/zad5_3-jszymanski36/inc/scene.hh
-drone.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/drone.hh
-memory
--
-
 /home/jakub/Documents/zad5_3-jszymanski36/inc/scene_object.hh
 cuboid.hh
 /home/jakub/Documents/zad5_3-jszymanski36/inc/cuboid.hh
@@ -88,34 +82,6 @@ math.h
 matrix.hh
 /home/jakub/Documents/zad5_3-jszymanski36/inc/matrix.hh
 
-/home/jakub/Documents/zad5_3-jszymanski36/src/flat.cpp
-../inc/flat.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/flat.hh
-fstream
--
-
-/home/jakub/Documents/zad5_3-jszymanski36/src/peak.cpp
-../inc/peak.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/peak.hh
-fstream
--
-
-/home/jakub/Documents/zad5_3-jszymanski36/src/scene.cpp
-bits/stdc++.h
--
-memory
--
-iostream
--
-../inc/scene.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/scene.hh
-../inc/slope.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/slope.hh
-../inc/peak.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/peak.hh
-../inc/flat.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/flat.hh
-
 /home/jakub/Documents/zad5_3-jszymanski36/src/scene_object.cpp
 ../inc/scene_object.hh
 /home/jakub/Documents/zad5_3-jszymanski36/inc/scene_object.hh
@@ -127,12 +93,6 @@ iostream
 /home/jakub/Documents/zad5_3-jszymanski36/inc/flat.hh
 ../inc/drone.hh
 /home/jakub/Documents/zad5_3-jszymanski36/inc/drone.hh
-fstream
--
-
-/home/jakub/Documents/zad5_3-jszymanski36/src/slope.cpp
-../inc/slope.hh
-/home/jakub/Documents/zad5_3-jszymanski36/inc/slope.hh
 fstream
 -
 

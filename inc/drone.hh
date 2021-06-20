@@ -68,6 +68,9 @@ class Drone: public HexPrism, public SceneObject {
     */
     void PlanPath (double angle, double distance, std::vector<Vector3D> &PathPoints);
 
+    /*!
+    * \brief Przedłuż ścieżkę
+    */
     void ExtendPath(double distance, std::vector<Vector3D> &PathPoints);
 
     /*!
@@ -115,6 +118,8 @@ class Drone: public HexPrism, public SceneObject {
     */
     virtual std::string ReturnType() {return "Dron";};
 
-
+    /*!
+    * \brief Detekcja kolizji pomiędzy dwoma dronami
+    */
     virtual bool DetectCollision(SceneObject *drone) override;
 };

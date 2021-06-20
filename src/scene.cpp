@@ -36,7 +36,6 @@ void Scene::AddDrone(Drone *new_drone) {
   
   DroneArray.push_back(new_drone); 
   ObjectList.push_back(std::shared_ptr<Drone>(new_drone));
-
 }
 
 /*!
@@ -105,7 +104,6 @@ void Scene::DeleteObject(int index, PzG::LaczeDoGNUPlota &Lacze){
   std::list<std::shared_ptr<SceneObject>>::iterator it = ObjectList.begin();
   std::advance(it, index + DroneArray.size() - 1);
 
-
   std::string local = it->get()->TakeFileName_LocalCoords();
   std::string global = it->get()->TakeFileName_GlobalCoords();
   Lacze.UsunNazwePliku(local);
@@ -147,6 +145,10 @@ Scene::~Scene(){
   }
 }
 
+/*!
+* Sprawdzanie czy aktywny dron koliduje z jakąkolwiek przeszkodą lub dronem
+* \return Jeżeli dron koliduje, to nazwę typu obiektu sceny z którym koliduje, jeżeli nie - pusty string
+*/
 std::string Scene::CheckCollision(){
 
   for(std::list<std::shared_ptr<SceneObject>>::iterator it = ObjectList.begin(); it != ObjectList.end(); ++it){

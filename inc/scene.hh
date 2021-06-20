@@ -86,5 +86,8 @@ class Scene: Drone {
     */
     ~Scene();
 
+    /*!
+    * \brief Sprawdzanie czy aktywny dron może wylądować
+    */
     std::string CheckCollision();
 };

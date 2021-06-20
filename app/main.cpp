@@ -88,7 +88,7 @@ int main()
   std::vector<Vector3D> Path;
   Scene scene;
   Drone drone1, drone2;
-/*   std::vector<Drone>::iterator it;   */ Drone* dronePtr;      // wskaźnik na aktywnego drona, to przez niego wykonywane są operacje na dronie
+  Drone* dronePtr;      // wskaźnik na aktywnego drona, to przez niego wykonywane są operacje na dronie
 
   char choice;              // wybór opcji przez użytkownika
   double angle, distance;   // kąt i odległość wybierane przez użytkownika
@@ -98,19 +98,18 @@ int main()
   HexPrism::TemplateFileName = PLIK_WZORCOWEGO_GRANIASTOSLUPA6;
 
   const std::string FileNames1[7] = {PLIK_ROBOCZY__DRON_KORPUS, PLIK_WLASCIWY__DRON1_KORPUS, PLIK_ROBOCZY__DRON_ROTOR, PLIK_WLASCIWY__DRON1_ROTOR1, PLIK_WLASCIWY__DRON1_ROTOR2, PLIK_WLASCIWY__DRON1_ROTOR3, PLIK_WLASCIWY__DRON1_ROTOR4};
-
-  drone1.SetCoordFiles(FileNames1);
+  drone1.SetCoordFiles(FileNames1);       //tworzenie 1. drona
   drone1.Initiate(DRONE1_POS, 0);
   drone1.CalcDroneGlobalCoords();
 
 
   const std::string FileNames2[7] = {PLIK_ROBOCZY__DRON_KORPUS, PLIK_WLASCIWY__DRON2_KORPUS, PLIK_ROBOCZY__DRON_ROTOR, PLIK_WLASCIWY__DRON2_ROTOR1, PLIK_WLASCIWY__DRON2_ROTOR2, PLIK_WLASCIWY__DRON2_ROTOR3, PLIK_WLASCIWY__DRON2_ROTOR4};
-  drone2.SetCoordFiles(FileNames2);
+  drone2.SetCoordFiles(FileNames2);       //tworzenie 2. drona
   drone2.Initiate(DRONE2_POS, 30);
   drone2.CalcDroneGlobalCoords();
 
 
-  scene.AddDrone(&drone1);
+  scene.AddDrone(&drone1);                //dodawanie dronów do sceny
   scene.AddDrone(&drone2);
   scene.ChooseActiveDrone(1);
   dronePtr = scene.GetActiveDrone();
@@ -194,7 +193,7 @@ int main()
                             dronePtr->VerticalFlight(80, Lacze);
                             dronePtr->Rotate(angle, Lacze);
                             dronePtr->HorizontalFlight(distance, Lacze);
-                            while(scene.CheckCollision() != ""){
+                            while(scene.CheckCollision() != ""){      //sprawdzanie dostepnosci ladowiska
                                    usleep(100000);
                                           std::cout << std::endl << ":( Ladowisko niedostepne!";
                                           std::cout << std::endl << "Wykryto element powierzchni typu: " << scene.CheckCollision();
