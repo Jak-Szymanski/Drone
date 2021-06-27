@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: Plik źródłowy vector3D.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('vector3_d_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">vector3D.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vector3_d_8cpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../inc/vector3D.hh&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="vector3_d_8cpp.html#ad3a96431e228a6e82f87fbdfa9e9c9ac">   15</a></span>&#160;<a class="code" href="doctest_8h.html#a116af65cb5e924b33ad9d9ecd7a783f3">std::ostream</a> &amp;<a class="code" href="vector3_d_8cpp.html#ad3a96431e228a6e82f87fbdfa9e9c9ac">operator &lt;&lt; </a>(<a class="code" href="doctest_8h.html#a116af65cb5e924b33ad9d9ecd7a783f3">std::ostream</a> &amp;out, <a class="code" href="class_vector.html">Vector3D</a> <span class="keyword">const</span> &amp;tmp) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>; ++i) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        out &lt;&lt; std::fixed &lt;&lt; std::setprecision(5) &lt;&lt; tmp[i] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    out &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="vector3_d_8cpp.html#a812f5e11010e684ff7649e56ebfa8296">   30</a></span>&#160;std::istream &amp;<a class="code" href="vector3_d_8cpp.html#a812f5e11010e684ff7649e56ebfa8296">operator &gt;&gt; </a>(std::istream &amp;in, <a class="code" href="class_vector.html">Vector3D</a> &amp;tmp) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>; ++i) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        in &gt;&gt; tmp[i];</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> in;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector3D::Vector</a>(){</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ++<a class="code" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">ActiveNumVectors</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ++<a class="code" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">AllNumVectors</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>; ++i) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">size</a>[i] = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector3D::Vector</a>(<span class="keywordtype">double</span> tmp[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>]) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    ++<a class="code" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">ActiveNumVectors</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    ++<a class="code" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">AllNumVectors</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>; ++i) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">size</a>[i] = tmp[i];</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector3D::Vector</a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector3D</a> &amp;vec){</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    ++<a class="code" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">ActiveNumVectors</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    ++<a class="code" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">AllNumVectors</a>;   </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>; ++i) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">size</a>[i] = vec[i];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="class_vector.html#a9b517d27225dfc398b506bd813887a99">Vector3D::~Vector</a>(){</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    --<a class="code" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">ActiveNumVectors</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_vector_html_a8ea57302b44e1d62b6bebe5fa593de3c"><div class="ttname"><a href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">Vector::size</a></div><div class="ttdeci">Type size[Size]</div><div class="ttdoc">Tablica wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00030">vector.hh:30</a></div></div>
+<div class="ttc" id="adoctest_8h_html_a116af65cb5e924b33ad9d9ecd7a783f3"><div class="ttname"><a href="doctest_8h.html#a116af65cb5e924b33ad9d9ecd7a783f3">ostream</a></div><div class="ttdeci">basic_ostream&lt; char, char_traits&lt; char &gt; &gt; ostream</div><div class="ttdef"><b>Definition:</b> <a href="doctest_8h_source.html#l00425">doctest.h:425</a></div></div>
+<div class="ttc" id="aclass_vector_html_a9b517d27225dfc398b506bd813887a99"><div class="ttname"><a href="class_vector.html#a9b517d27225dfc398b506bd813887a99">Vector&lt; double, SIZE &gt;::~Vector</a></div><div class="ttdeci">~Vector()</div><div class="ttdoc">Dekonstruktor wektora.</div></div>
+<div class="ttc" id="aclass_vector_html_aa70ff8ac28b042379c8a7d7298289b19"><div class="ttname"><a href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">Vector::AllNumVectors</a></div><div class="ttdeci">static int AllNumVectors</div><div class="ttdoc">Liczba wszystkich wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00040">vector.hh:40</a></div></div>
+<div class="ttc" id="asize_8hh_html_a0ae4b10cd6576f2ccf0da832de940dae"><div class="ttname"><a href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a></div><div class="ttdeci">constexpr int SIZE</div><div class="ttdef"><b>Definition:</b> <a href="size_8hh_source.html#l00003">size.hh:3</a></div></div>
+<div class="ttc" id="aclass_vector_html_ae3c0485e4386eb680daa90dd62299fd2"><div class="ttname"><a href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector&lt; double, SIZE &gt;::Vector</a></div><div class="ttdeci">Vector()</div><div class="ttdoc">Konstruktor bezparametryczny wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00153">vector.hh:153</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector&lt; double, SIZE &gt;</a></div></div>
+<div class="ttc" id="avector3_d_8cpp_html_ad3a96431e228a6e82f87fbdfa9e9c9ac"><div class="ttname"><a href="vector3_d_8cpp.html#ad3a96431e228a6e82f87fbdfa9e9c9ac">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, Vector3D const &amp;tmp)</div><div class="ttdoc">Przeciążenie operatora &lt;&lt; dla Wektora3D.</div><div class="ttdef"><b>Definition:</b> <a href="vector3_d_8cpp_source.html#l00015">vector3D.cpp:15</a></div></div>
+<div class="ttc" id="aclass_vector_html_af114f8c2828431bd4fab3ef5337e3e95"><div class="ttname"><a href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">Vector::ActiveNumVectors</a></div><div class="ttdeci">static int ActiveNumVectors</div><div class="ttdoc">Liczba aktywych wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00035">vector.hh:35</a></div></div>
+<div class="ttc" id="avector3_d_8cpp_html_a812f5e11010e684ff7649e56ebfa8296"><div class="ttname"><a href="vector3_d_8cpp.html#a812f5e11010e684ff7649e56ebfa8296">operator&gt;&gt;</a></div><div class="ttdeci">std::istream &amp; operator&gt;&gt;(std::istream &amp;in, Vector3D &amp;tmp)</div><div class="ttdoc">Przeciążenie operatora &gt;&gt; dla Wektora3D.</div><div class="ttdef"><b>Definition:</b> <a href="vector3_d_8cpp_source.html#l00030">vector3D.cpp:30</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="vector3_d_8cpp.html">vector3D.cpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

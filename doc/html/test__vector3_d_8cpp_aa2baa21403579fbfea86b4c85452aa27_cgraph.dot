@@ -1,0 +1,12 @@
+digraph "TEST_CASE"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="TEST_CASE",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Vector\< double, SIZE\l \>::ClearAllNumVectors",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector.html#a7820b202924439ac13c3b5318dc5c114",tooltip="Wyzeruj liczbę wszystkich wektorów (używane jedynie do testów)"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Vector\< double, SIZE\l \>::ReturnAllNumVectors",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector.html#a55eba486f96f978032da869b56db4b01",tooltip="Zwróc liczbę wszystkich wektorów."];
+}

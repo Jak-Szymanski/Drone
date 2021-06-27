@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: Dokumentacja pliku main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('app_2main_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definicje</a> &#124;
+<a href="#func-members">Funkcje</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku app/main.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="example_config_8h_source.html">exampleConfig.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="scene_8hh_source.html">../inc/scene.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="slope_8hh_source.html">../inc/slope.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="peak_8hh_source.html">../inc/peak.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="flat_8hh_source.html">../inc/flat.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="matrix3x3_8hh_source.html">../inc/matrix3x3.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lacze__do__gnuplota_8hh_source.html">../inc/lacze_do_gnuplota.hh</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Wykres zależności załączania dla app/main.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="app_2main_8cpp__incl.png" border="0" usemap="#main_8cpp" alt=""/></div>
+</div>
+</div>
+<p><a href="app_2main_8cpp_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:a71dd97657c31e68cee4840daca71bfc9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a71dd97657c31e68cee4840daca71bfc9">PLIK_ROBOCZY__DRON_KORPUS</a>&#160;&#160;&#160;&quot;../datasets/PlikRoboczy_Dron_Korpus.dat&quot;</td></tr>
+<tr class="separator:a71dd97657c31e68cee4840daca71bfc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73ea74f338af593194749f22946f93c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a73ea74f338af593194749f22946f93c2">PLIK_ROBOCZY__DRON_ROTOR</a>&#160;&#160;&#160;&quot;../datasets/PlikRoboczy_Dron_Rotor.dat&quot;</td></tr>
+<tr class="separator:a73ea74f338af593194749f22946f93c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3c7e6d1a9951c3283dd637275d64e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a6e3c7e6d1a9951c3283dd637275d64e6">PLIK_WLASCIWY__DRON1_KORPUS</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Korpus.dat&quot;</td></tr>
+<tr class="separator:a6e3c7e6d1a9951c3283dd637275d64e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006a9471b4119eb1bec2a292c4315acd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a006a9471b4119eb1bec2a292c4315acd">PLIK_WLASCIWY__DRON1_ROTOR1</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor1.dat&quot;</td></tr>
+<tr class="separator:a006a9471b4119eb1bec2a292c4315acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac12a91e7d228562853617e2c0ea678d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#ac12a91e7d228562853617e2c0ea678d1">PLIK_WLASCIWY__DRON1_ROTOR2</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor2.dat&quot;</td></tr>
+<tr class="separator:ac12a91e7d228562853617e2c0ea678d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a103096588ce806b970bbc303169c3fde"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a103096588ce806b970bbc303169c3fde">PLIK_WLASCIWY__DRON1_ROTOR3</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor3.dat&quot;</td></tr>
+<tr class="separator:a103096588ce806b970bbc303169c3fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ffdad9e2ea0df67866274330a10950"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a89ffdad9e2ea0df67866274330a10950">PLIK_WLASCIWY__DRON1_ROTOR4</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor4.dat&quot;</td></tr>
+<tr class="separator:a89ffdad9e2ea0df67866274330a10950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1749db85ab4dbc2e3e1a2d1043e485d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a1749db85ab4dbc2e3e1a2d1043e485d4">PLIK_WLASCIWY__DRON2_KORPUS</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Korpus.dat&quot;</td></tr>
+<tr class="separator:a1749db85ab4dbc2e3e1a2d1043e485d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2789441753973ed69ce77974996448ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a2789441753973ed69ce77974996448ea">PLIK_WLASCIWY__DRON2_ROTOR1</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor1.dat&quot;</td></tr>
+<tr class="separator:a2789441753973ed69ce77974996448ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada702919d023df75659eb3dd12475e29"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#ada702919d023df75659eb3dd12475e29">PLIK_WLASCIWY__DRON2_ROTOR2</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor2.dat&quot;</td></tr>
+<tr class="separator:ada702919d023df75659eb3dd12475e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa470c314a09603afc6f998dc6b90723"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#afa470c314a09603afc6f998dc6b90723">PLIK_WLASCIWY__DRON2_ROTOR3</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor3.dat&quot;</td></tr>
+<tr class="separator:afa470c314a09603afc6f998dc6b90723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a951e695fd984f50d2a2429ffe8d17b50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a951e695fd984f50d2a2429ffe8d17b50">PLIK_WLASCIWY__DRON2_ROTOR4</a>&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor4.dat&quot;</td></tr>
+<tr class="separator:a951e695fd984f50d2a2429ffe8d17b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a346a5da43df2b2a2038e95c893ccb129"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a346a5da43df2b2a2038e95c893ccb129">PLIK_TRASY_PRZELOTU</a>&#160;&#160;&#160;&quot;../datasets/trasa_przelotu.dat&quot;</td></tr>
+<tr class="separator:a346a5da43df2b2a2038e95c893ccb129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d785760df7d38b8c4fe1d84f4d978d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#ab9d785760df7d38b8c4fe1d84f4d978d">PLIK_WZORCOWEGO_SZESCIANU</a>&#160;&#160;&#160;&quot;../datasets/szescian.dat&quot;</td></tr>
+<tr class="separator:ab9d785760df7d38b8c4fe1d84f4d978d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac10437a5f7133af7fe8703e7e350105e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#ac10437a5f7133af7fe8703e7e350105e">PLIK_WZORCOWEGO_GRANIASTOSLUPA6</a>&#160;&#160;&#160;&quot;../datasets/graniastoslup6.dat&quot;</td></tr>
+<tr class="separator:ac10437a5f7133af7fe8703e7e350105e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421ce3f925e197087a8d050e1cebb55c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a421ce3f925e197087a8d050e1cebb55c">DRONE1_POS</a>&#160;&#160;&#160;20,20,0</td></tr>
+<tr class="memdesc:a421ce3f925e197087a8d050e1cebb55c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozycja 1. drona.  <a href="app_2main_8cpp.html#a421ce3f925e197087a8d050e1cebb55c">Więcej...</a><br /></td></tr>
+<tr class="separator:a421ce3f925e197087a8d050e1cebb55c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e9b0260b9301d268ae215de636a394"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a88e9b0260b9301d268ae215de636a394">DRONE2_POS</a>&#160;&#160;&#160;140,50,0</td></tr>
+<tr class="memdesc:a88e9b0260b9301d268ae215de636a394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pozycja 2. drona.  <a href="app_2main_8cpp.html#a88e9b0260b9301d268ae215de636a394">Więcej...</a><br /></td></tr>
+<tr class="separator:a88e9b0260b9301d268ae215de636a394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:a409bde6e9fcf0c8205e47ddd14dea04a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a409bde6e9fcf0c8205e47ddd14dea04a">WritePathToFile</a> (std::vector&lt; <a class="el" href="vector3_d_8hh.html#afe9a79695fd6c7e892c27528d3ca948d">Vector3D</a> &gt; PathPoints, std::string FileName)</td></tr>
+<tr class="memdesc:a409bde6e9fcf0c8205e47ddd14dea04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zapisz ścieżkę lotu do odpowiedniego pliku.  <a href="app_2main_8cpp.html#a409bde6e9fcf0c8205e47ddd14dea04a">Więcej...</a><br /></td></tr>
+<tr class="separator:a409bde6e9fcf0c8205e47ddd14dea04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a632368ccd119d49b4fa1dc265ed984d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#a632368ccd119d49b4fa1dc265ed984d4">PrintMenu</a> ()</td></tr>
+<tr class="memdesc:a632368ccd119d49b4fa1dc265ed984d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wyświetl opcje menu programu.  <a href="app_2main_8cpp.html#a632368ccd119d49b4fa1dc265ed984d4">Więcej...</a><br /></td></tr>
+<tr class="separator:a632368ccd119d49b4fa1dc265ed984d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="app_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja definicji</h2>
+<a id="a421ce3f925e197087a8d050e1cebb55c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421ce3f925e197087a8d050e1cebb55c">&#9670;&nbsp;</a></span>DRONE1_POS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DRONE1_POS&#160;&#160;&#160;20,20,0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00047">47</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a88e9b0260b9301d268ae215de636a394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e9b0260b9301d268ae215de636a394">&#9670;&nbsp;</a></span>DRONE2_POS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DRONE2_POS&#160;&#160;&#160;140,50,0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00052">52</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a71dd97657c31e68cee4840daca71bfc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71dd97657c31e68cee4840daca71bfc9">&#9670;&nbsp;</a></span>PLIK_ROBOCZY__DRON_KORPUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_ROBOCZY__DRON_KORPUS&#160;&#160;&#160;&quot;../datasets/PlikRoboczy_Dron_Korpus.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00024">24</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a73ea74f338af593194749f22946f93c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73ea74f338af593194749f22946f93c2">&#9670;&nbsp;</a></span>PLIK_ROBOCZY__DRON_ROTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_ROBOCZY__DRON_ROTOR&#160;&#160;&#160;&quot;../datasets/PlikRoboczy_Dron_Rotor.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00025">25</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a346a5da43df2b2a2038e95c893ccb129"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a346a5da43df2b2a2038e95c893ccb129">&#9670;&nbsp;</a></span>PLIK_TRASY_PRZELOTU</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_TRASY_PRZELOTU&#160;&#160;&#160;&quot;../datasets/trasa_przelotu.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00039">39</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6e3c7e6d1a9951c3283dd637275d64e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e3c7e6d1a9951c3283dd637275d64e6">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON1_KORPUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON1_KORPUS&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Korpus.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00027">27</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a006a9471b4119eb1bec2a292c4315acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006a9471b4119eb1bec2a292c4315acd">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON1_ROTOR1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON1_ROTOR1&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor1.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00028">28</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac12a91e7d228562853617e2c0ea678d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac12a91e7d228562853617e2c0ea678d1">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON1_ROTOR2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON1_ROTOR2&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor2.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00029">29</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a103096588ce806b970bbc303169c3fde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a103096588ce806b970bbc303169c3fde">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON1_ROTOR3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON1_ROTOR3&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor3.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00030">30</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a89ffdad9e2ea0df67866274330a10950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89ffdad9e2ea0df67866274330a10950">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON1_ROTOR4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON1_ROTOR4&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron1_Rotor4.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00031">31</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1749db85ab4dbc2e3e1a2d1043e485d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1749db85ab4dbc2e3e1a2d1043e485d4">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON2_KORPUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON2_KORPUS&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Korpus.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00033">33</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2789441753973ed69ce77974996448ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2789441753973ed69ce77974996448ea">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON2_ROTOR1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON2_ROTOR1&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor1.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00034">34</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ada702919d023df75659eb3dd12475e29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada702919d023df75659eb3dd12475e29">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON2_ROTOR2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON2_ROTOR2&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor2.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00035">35</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afa470c314a09603afc6f998dc6b90723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa470c314a09603afc6f998dc6b90723">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON2_ROTOR3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON2_ROTOR3&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor3.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00036">36</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a951e695fd984f50d2a2429ffe8d17b50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a951e695fd984f50d2a2429ffe8d17b50">&#9670;&nbsp;</a></span>PLIK_WLASCIWY__DRON2_ROTOR4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WLASCIWY__DRON2_ROTOR4&#160;&#160;&#160;&quot;../datasets/PlikWlasciwy_Dron2_Rotor4.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00037">37</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac10437a5f7133af7fe8703e7e350105e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac10437a5f7133af7fe8703e7e350105e">&#9670;&nbsp;</a></span>PLIK_WZORCOWEGO_GRANIASTOSLUPA6</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WZORCOWEGO_GRANIASTOSLUPA6&#160;&#160;&#160;&quot;../datasets/graniastoslup6.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00042">42</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab9d785760df7d38b8c4fe1d84f4d978d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9d785760df7d38b8c4fe1d84f4d978d">&#9670;&nbsp;</a></span>PLIK_WZORCOWEGO_SZESCIANU</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLIK_WZORCOWEGO_SZESCIANU&#160;&#160;&#160;&quot;../datasets/szescian.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00041">41</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00085">85</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+<div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="app_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#app_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a632368ccd119d49b4fa1dc265ed984d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a632368ccd119d49b4fa1dc265ed984d4">&#9670;&nbsp;</a></span>PrintMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrintMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00073">73</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+<div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="app_2main_8cpp_a632368ccd119d49b4fa1dc265ed984d4_icgraph.png" border="0" usemap="#app_2main_8cpp_a632368ccd119d49b4fa1dc265ed984d4_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a409bde6e9fcf0c8205e47ddd14dea04a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409bde6e9fcf0c8205e47ddd14dea04a">&#9670;&nbsp;</a></span>WritePathToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WritePathToFile </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="vector3_d_8hh.html#afe9a79695fd6c7e892c27528d3ca948d">Vector3D</a> &gt;&#160;</td>
+          <td class="paramname"><em>PathPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>FileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">PathPoints</td><td>- kontener zawierający poszczególne punkty na planowanej ścieżce lotu drona </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">FileName</td><td>- nazwa pliku do którego ścieżka powinna zostać zapisana </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definicja w linii <a class="el" href="app_2main_8cpp_source.html#l00060">60</a> pliku <a class="el" href="app_2main_8cpp_source.html">app/main.cpp</a>.</p>
+<div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="app_2main_8cpp_a409bde6e9fcf0c8205e47ddd14dea04a_icgraph.png" border="0" usemap="#app_2main_8cpp_a409bde6e9fcf0c8205e47ddd14dea04a_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="app_2main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

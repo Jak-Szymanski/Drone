@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: Plik źródłowy slope.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('slope_8hh_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">slope.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="slope_8hh.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scene__object_8hh.html">scene_object.hh</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_slope.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_slope.html">Slope</a>: <span class="keyword">public</span> <a class="code" href="class_scene_object.html">SceneObject</a>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_slope.html#a7b5acd1c74ba803220a6d6af7b057650">Initiate</a>(<span class="keywordtype">double</span> scale_x, <span class="keywordtype">double</span> scale_y, <span class="keywordtype">double</span> scale_z) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_slope.html#a33b1b7109f5c69c30eed2b71b95103eb">Slope</a>(<a class="code" href="class_vector.html">Vector3D</a> scale, <span class="keywordtype">double</span> pos_x, <span class="keywordtype">double</span> pos_y, std::string localfile, std::string globalfile);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_slope.html#a114b167f6e487f6b418e3b5e523af478">   34</a></span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_slope.html#a114b167f6e487f6b418e3b5e523af478">ReturnType</a>() {<span class="keywordflow">return</span> <span class="stringliteral">&quot;Gora z grania&quot;</span>;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="ascene__object_8hh_html"><div class="ttname"><a href="scene__object_8hh.html">scene_object.hh</a></div><div class="ttdoc">Definicja klasy SceneObject.</div></div>
+<div class="ttc" id="aclass_slope_html_a7b5acd1c74ba803220a6d6af7b057650"><div class="ttname"><a href="class_slope.html#a7b5acd1c74ba803220a6d6af7b057650">Slope::Initiate</a></div><div class="ttdeci">virtual void Initiate(double scale_x, double scale_y, double scale_z) override</div><div class="ttdoc">Tworzenie gory z grania według bryły wzorcowej i skali.</div><div class="ttdef"><b>Definition:</b> <a href="slope_8cpp_source.html#l00035">slope.cpp:35</a></div></div>
+<div class="ttc" id="aclass_slope_html"><div class="ttname"><a href="class_slope.html">Slope</a></div><div class="ttdoc">Modeluje pojęcie gory z grania.</div><div class="ttdef"><b>Definition:</b> <a href="slope_8hh_source.html#l00015">slope.hh:15</a></div></div>
+<div class="ttc" id="aclass_scene_object_html"><div class="ttname"><a href="class_scene_object.html">SceneObject</a></div><div class="ttdef"><b>Definition:</b> <a href="scene__object_8hh_source.html#l00014">scene_object.hh:14</a></div></div>
+<div class="ttc" id="aclass_slope_html_a114b167f6e487f6b418e3b5e523af478"><div class="ttname"><a href="class_slope.html#a114b167f6e487f6b418e3b5e523af478">Slope::ReturnType</a></div><div class="ttdeci">virtual std::string ReturnType()</div><div class="ttdoc">Zwroc nazwe typu obiektu sceny.</div><div class="ttdef"><b>Definition:</b> <a href="slope_8hh_source.html#l00034">slope.hh:34</a></div></div>
+<div class="ttc" id="aclass_slope_html_a33b1b7109f5c69c30eed2b71b95103eb"><div class="ttname"><a href="class_slope.html#a33b1b7109f5c69c30eed2b71b95103eb">Slope::Slope</a></div><div class="ttdeci">Slope(Vector3D scale, double pos_x, double pos_y, std::string localfile, std::string globalfile)</div><div class="ttdoc">Konstruktor tworzenia nowej gory z grania z danymi parametrami.</div><div class="ttdef"><b>Definition:</b> <a href="slope_8cpp_source.html#l00018">slope.cpp:18</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector&lt; double, SIZE &gt;</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="slope_8hh.html">slope.hh</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+digraph "doctest::toString"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="doctest::toString",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="doctest::detail::StringMaker\lBase\< detail::has_insertion\l_operator\< T \>::value \>::convert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdoctest_1_1detail_1_1_string_maker_base.html#a67d29f2a5de9a522d8e8607c1a39db9b",tooltip=" "];
+}

@@ -1,0 +1,29 @@
+digraph "Flat::Flat"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Flat::Flat",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Konstruktor tworzenia nowego plaskowyzu z danymi parametrami."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="SceneObject::CalcGlobalCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_scene_object.html#ac21ea4a73921da93ef9d5e16f679ee7d",tooltip="Oblicz wspolrzedne globalne obiektu sceny."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Solid::TakeFileName\l_GlobalCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#a1da25fa89b384857477bbf677ad9cbc1",tooltip="Zwracanie nazwy pliku zawierającego globalne współrzędne bryły."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Solid::TakeFileName\l_LocalCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#afbb5eab8defedf0c3e3e82536be454be",tooltip="Zwracanie nazwy pliku zawierającego lokalne współrzędne bryły."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Cuboid::TransformToParents\lCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#ab138e2cf81c35eb75fc1e59736e9bf68",tooltip="Przetłumacz współrzędne lokalne prostopadłościanu na współrzędne w układzie drona."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Matrix::RotationMatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix.html#a689c1d74df7855657ef8fcd9a09ae93b",tooltip="Obliczanie trójwymiarowej macierzy obrotu."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Flat::Initiate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_flat.html#a3e5c41d54744de87c604203cf16f62e0",tooltip="Tworzenie plaskowyzu według bryły wzorcowej i skali."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Solid::Scale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#ae3ae7932640de22467e5952e5d5e96b8",tooltip="Skalowanie punktu przez wektor skali danej bryły Zwraca współrzędne przeskalowanego punktu."];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Solid::SetScale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#a1c234fdc7486ab59451b816b7a187208",tooltip="Ustawianie wektora skali."];
+  Node7 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Solid::SetFileNames",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#ace141dcdd45eb9db7d34be5eced68caf",tooltip="Ustalanie nazw plików zawierających wspólrzędne danej bryły."];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Cuboid::SetPosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#a948ebc82c9c024cbd7518273dcb2fa7a",tooltip="Ustal pozycję i orientację prostopadłościanu (względem układu drona)"];
+}

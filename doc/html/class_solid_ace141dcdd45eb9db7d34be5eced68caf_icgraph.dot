@@ -1,0 +1,18 @@
+digraph "Solid::SetFileNames"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="Solid::SetFileNames",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Ustalanie nazw plików zawierających wspólrzędne danej bryły."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Flat::Flat",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_flat.html#a2867c2bf0ae9291565ad52b2f8852386",tooltip="Konstruktor tworzenia nowego plaskowyzu z danymi parametrami."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Peak::Peak",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_peak.html#acf8ee58742a2e46ef6cd139a8d92b548",tooltip="Konstruktor tworzenia nowej gory ze szczytem z danymi parametrami."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Drone::SetCoordFiles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#ae71440afc3e91c989ae07d8cf1a53b83",tooltip="Ustal pliki zawierające współrzędne wszystkich elementów drona."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$app_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Slope::Slope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_slope.html#a33b1b7109f5c69c30eed2b71b95103eb",tooltip="Konstruktor tworzenia nowej gory z grania z danymi parametrami."];
+}

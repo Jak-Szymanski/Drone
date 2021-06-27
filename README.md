@@ -1,3 +1,4 @@
+![Class diagram](/doc/img/UML_class.jpeg)
 
 ## Building
 

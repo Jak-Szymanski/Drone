@@ -1,0 +1,16 @@
+digraph "SceneObject::CalcGlobalCoords"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="SceneObject::CalcGlobalCoords",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Oblicz wspolrzedne globalne obiektu sceny."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Solid::TakeFileName\l_GlobalCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#a1da25fa89b384857477bbf677ad9cbc1",tooltip="Zwracanie nazwy pliku zawierającego globalne współrzędne bryły."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Solid::TakeFileName\l_LocalCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#afbb5eab8defedf0c3e3e82536be454be",tooltip="Zwracanie nazwy pliku zawierającego lokalne współrzędne bryły."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Cuboid::TransformToParents\lCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#ab138e2cf81c35eb75fc1e59736e9bf68",tooltip="Przetłumacz współrzędne lokalne prostopadłościanu na współrzędne w układzie drona."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Matrix::RotationMatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix.html#a689c1d74df7855657ef8fcd9a09ae93b",tooltip="Obliczanie trójwymiarowej macierzy obrotu."];
+}

@@ -1,0 +1,14 @@
+digraph "HexPrism"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="HexPrism",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Modeluje pojęcie graniastosłupa foremnego sześciokątnego (będącym w tym programie rotorami dronu)"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Solid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html",tooltip="Modeluje pojęcie bryły geometycznej."];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Scale_Vector" ,fontname="Helvetica"];
+  Node3 [label="Vector\< double, SIZE \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< double, SIZE \>" ,fontname="Helvetica"];
+  Node4 [label="Vector\< Type, Size \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector.html",tooltip="Modeluje pojęcie wektora o dowolnym rozmiarze i typie danych, które on zawiera."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Position" ,fontname="Helvetica"];
+}

@@ -1,0 +1,25 @@
+digraph "Drone::Initiate"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Drone::Initiate",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Tworzenie drona według brył wzorcowych jego elementów, współrzędnych położenia i kątu obrotu."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Cuboid::Initiate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#a29cb59f4f6f3105879dd37274d1b58fc",tooltip="Tworzenie prostopadłościanu według bryły wzorcowej i skali."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Solid::Scale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#ae3ae7932640de22467e5952e5d5e96b8",tooltip="Skalowanie punktu przez wektor skali danej bryły Zwraca współrzędne przeskalowanego punktu."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Solid::SetScale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#a1c234fdc7486ab59451b816b7a187208",tooltip="Ustawianie wektora skali."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Solid::TakeFileName\l_LocalCoords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html#afbb5eab8defedf0c3e3e82536be454be",tooltip="Zwracanie nazwy pliku zawierającego lokalne współrzędne bryły."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="HexPrism::Initiate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_hex_prism.html#a6170c84fd33d2123756204a8b4eaec65",tooltip="Tworzenie graniastosłupa według bryły wzorcowej i skali."];
+  Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="HexPrism::SetPosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_hex_prism.html#a836bdf0d94669ee0cdaa97894b6aa7ea",tooltip="Ustal pozycję i orientację graniastosłupa (względem układu drona)"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Cuboid::SetPosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#a948ebc82c9c024cbd7518273dcb2fa7a",tooltip="Ustal pozycję i orientację prostopadłościanu (względem układu drona)"];
+}

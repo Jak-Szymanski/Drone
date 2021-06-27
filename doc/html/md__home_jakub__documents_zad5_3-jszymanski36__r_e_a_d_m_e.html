@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: README</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md__home_jakub__documents_zad5_3-jszymanski36__r_e_a_d_m_e.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">README </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><div class="image">
+<img src="UML_class.jpeg" alt=""/>
+<div class="caption">
+Class diagram</div></div>
+   <h2><a class="anchor" id="autotoc_md0"></a>
+Building</h2>
+<p>Build by making a build directory (i.e. <code>build/</code>), run <code>cmake</code> in that dir, and then use <code>make</code> to build the desired target.</p>
+<p>Requirements: cmake, gnuplot, doxygen + dot (in graphviz library)</p>
+<p>Example:</p>
+<div class="fragment"><div class="line">&gt; mkdir build &amp;&amp; cd build</div>
+<div class="line">&gt; cmake .. #### options: -DCMAKE_BUILD_TYPE=[Debug | Coverage | Release], Debug is default</div>
+<div class="line">&gt; make     #### compilation</div>
+<div class="line">&gt; ./main   #### main() from app</div>
+<div class="line">&gt; make test      #### Compile the tests</div>
+<div class="line">&gt; ./unit_tests -s   #### Start the tests, -s flag - full description of each case</div>
+<div class="line">&gt; make fulltest #### alternative for above, compile &amp; run tests with full decription</div>
+<div class="line">&gt; make coverage  #### Generate a coverage report</div>
+<div class="line">&gt; make doc       #### Generate html documentation</div>
+</div><!-- fragment --><p>Things to remember:</p><ul>
+<li>changes to CMakeLists.txt in the main folder with new files added, i.e.: <div class="fragment"><div class="line"><span class="preprocessor"># --------------------------------------------------------------------------------</span></div>
+<div class="line"><span class="preprocessor">#                         Locate files (change as needed).</span></div>
+<div class="line"><span class="preprocessor"># --------------------------------------------------------------------------------</span></div>
+<div class="line">set(SOURCES          # All .cpp files in src/</div>
+<div class="line">    src/lacze_do_gnuplota</div>
+<div class="line">    src/Matrix2x2.cpp</div>
+<div class="line">    src/Rectangle .cpp</div>
+<div class="line">    src/Vector2D.cpp # etc.</div>
+<div class="line">)</div>
+<div class="line">set(TESTFILES        <span class="preprocessor"># All .cpp files in tests/</span></div>
+<div class="line">    Vector2D.cpp</div>
+<div class="line">    Matrix2x2.cpp</div>
+<div class="line">    Rectangle.cpp # etc.</div>
+<div class="line">)</div>
+<div class="line">set(LIBRARY_NAME zadX)  <span class="preprocessor"># Default name for the library built from src</span><span class="comment">/*.cpp (change if you wish)</span></div>
+</div><!-- fragment --></li>
+<li>changes to <a class="el" href="tests_2_c_make_lists_8txt.html">tests/CMakeLists.txt</a> (in tests subfolder) with new files added, i.e.: <div class="fragment"><div class="line"><span class="preprocessor"># List all files containing tests. (Change as needed)</span></div>
+<div class="line">set(TESTFILES        # All .cpp files in tests/</div>
+<div class="line">    <a class="code" href="app_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>.cpp</div>
+<div class="line">    test_Wektor2D.cpp</div>
+<div class="line">    test_Macierz2x2.cpp</div>
+<div class="line">    test_Prostokat.cpp # etc.</div>
+<div class="line">)</div>
+</div><!-- fragment --></li>
+</ul>
+<p>The <code>main.cpp</code> in the folder <code>tests</code> is needed. Only there we define <code>#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN</code>.</p>
+<p>The main loop of the program is in the <code>app</code> folder. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div class="ttc" id="aapp_2main_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="app_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="app_2main_8cpp_source.html#l00085">app/main.cpp:85</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

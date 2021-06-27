@@ -278,7 +278,6 @@ void Drone::SetCoordFiles(const std::string filenames[7]){
 
 /*!
 * Tworzenie współrzędnych lokalnych prostopadłościanu na podstawie współrzędnych wzorcowych jego elementów i położenia
-* \param[in] filenames - tablica zawierająca odpowiednio: nazwę pliku z współrzędnymi wzorcowymi sześcianu i graniastosłupa
 * \param[in] scale_x - współrzędna x-owa położenia drona
 * \param[in] scale_y - współrzędna y-owa położenia drona
 * \param[in] scale_z - współrzędna z-owa położenia drona

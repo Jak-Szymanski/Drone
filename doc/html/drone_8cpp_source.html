@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: Plik źródłowy drone.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('drone_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">drone.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="drone_8cpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../inc/drone.hh&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../inc/matrix3x3.hh&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">   15</a></span>&#160;<span class="preprocessor">#define PI 3.14159265358979323846</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">   20</a></span>&#160;<span class="preprocessor">#define FLIGHT_INC 2</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="drone_8cpp.html#a993f69504bc352b52473ea23fd8e06f1">   25</a></span>&#160;<span class="preprocessor">#define ROTOR_ROTATE_INC 10</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">   30</a></span>&#160;<span class="preprocessor">#define DRONE_ROTATE_INC 5</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="drone_8cpp.html#a868fe3df00c1141d6fa5e3696a7686e7">   35</a></span>&#160;<span class="preprocessor">#define BODY_SCALE 10,8,4</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="drone_8cpp.html#ae07a5abaf487d2c2553c2212f2f7e535">   40</a></span>&#160;<span class="preprocessor">#define ROTOR_SCALE 8,8,2</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="drone_8cpp.html#af5db80a9a052aa63732ef6df50fe574f">   45</a></span>&#160;<span class="preprocessor">#define BODY_POS 0,0,2</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="drone_8cpp.html#af61ccf43e1894fbe0c70c7f73f60c7fa">   50</a></span>&#160;<span class="preprocessor">#define ROTOR0_POS 5,4,5</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="drone_8cpp.html#acfbafa9dcc1808f18a1399214d9dfdac">   55</a></span>&#160;<span class="preprocessor">#define ROTOR1_POS 5,-4,5</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="drone_8cpp.html#ae2cb824c5ab7b717eb380f97f79650c3">   60</a></span>&#160;<span class="preprocessor">#define ROTOR2_POS -5,4,5</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="drone_8cpp.html#accc155f938c6df72ce542b92802deeb6">   65</a></span>&#160;<span class="preprocessor">#define ROTOR3_POS -5,-4,5</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_drone.html#af3a82f532aa3fc33d906bd39bc4cd9d1">   74</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#af3a82f532aa3fc33d906bd39bc4cd9d1">Drone::CalcRotorGlobalCoords</a>(<span class="keyword">const</span> <a class="code" href="class_hex_prism.html">HexPrism</a> &amp;Rotor)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::ifstream local(<a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>.<a class="code" href="class_solid.html#afbb5eab8defedf0c3e3e82536be454be">TakeFileName_LocalCoords</a>());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::ofstream global(<a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>.<a class="code" href="class_solid.html#a1da25fa89b384857477bbf677ad9cbc1">TakeFileName_GlobalCoords</a>());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> point;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">if</span>(!local.is_open() || !global.is_open()) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Błąd w otwieraniu pliku!&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">while</span>(local.is_open()){</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i){</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">if</span>(!(local &gt;&gt; point)) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      point = <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>.<a class="code" href="class_hex_prism.html#acb29ae89f0ee63fe101a7f3825eb237e">TransformToParentsCoords</a>(point);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      point = <a class="code" href="class_drone.html#a1314477f931465e926532b37b3460ccf">TransformToParentsCoords</a>(point);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      global &lt;&lt; point;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    global &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_drone.html#ab8695f20d1dd851370bda45a921390f0">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#ab8695f20d1dd851370bda45a921390f0">Drone::CalcBodyGlobalCoords</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  std::ifstream local(<a class="code" href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Body</a>.<a class="code" href="class_solid.html#afbb5eab8defedf0c3e3e82536be454be">TakeFileName_LocalCoords</a>());</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  std::ofstream global(<a class="code" href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Body</a>.<a class="code" href="class_solid.html#a1da25fa89b384857477bbf677ad9cbc1">TakeFileName_GlobalCoords</a>());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> point;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">if</span>(!local.is_open() || !global.is_open()) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Błąd w otwieraniu pliku!&quot;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">while</span>(<span class="keyword">true</span>){</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i){</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      local &gt;&gt; point;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordflow">if</span>( local.eof()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      point = <a class="code" href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Body</a>.<a class="code" href="class_cuboid.html#ab138e2cf81c35eb75fc1e59736e9bf68">TransformToParentsCoords</a>(point);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      point = <a class="code" href="class_drone.html#a1314477f931465e926532b37b3460ccf">TransformToParentsCoords</a>(point);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      global &lt;&lt; point;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    global &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="class_drone.html#a1314477f931465e926532b37b3460ccf">  123</a></span>&#160;<a class="code" href="class_vector.html">Vector3D</a> <a class="code" href="class_drone.html#a1314477f931465e926532b37b3460ccf">Drone::TransformToParentsCoords</a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector3D</a> &amp;Point)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> result;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <a class="code" href="class_matrix.html">Matrix3x3</a> MatRot;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  MatRot.<a class="code" href="class_matrix.html#a689c1d74df7855657ef8fcd9a09ae93b">RotationMatrix</a>(<a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  result = MatRot * Point;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  result = result + <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_drone.html#a3b0ad5608addd2eaf22569e2015f5374">  141</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#a3b0ad5608addd2eaf22569e2015f5374">Drone::PlanPath</a> (<span class="keywordtype">double</span> angle, <span class="keywordtype">double</span> distance, std::vector&lt;Vector3D&gt; &amp;PathPoints){</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  PathPoints.clear();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">double</span> T_height[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {0,0,80};</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">double</span> radians = (angle + <a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a>)  * <a class="code" href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>/180;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">double</span> T_flight[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {cos(radians)*distance, sin(radians)*distance, 0};</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> height(T_height);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> flight(T_flight);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  PathPoints.push_back(<a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  PathPoints.push_back(<a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> + height);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  PathPoints.push_back(<a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> + height + flight);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  PathPoints.push_back(<a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> + flight);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="class_drone.html#a095c4233c9415ff2ae084d82c683e263">  161</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#a095c4233c9415ff2ae084d82c683e263">Drone::ExtendPath</a>(<span class="keywordtype">double</span> distance, std::vector&lt;Vector3D&gt; &amp;PathPoints){</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">double</span> radians = (<a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a>)  * <a class="code" href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>/180;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">double</span> T_flight[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {cos(radians)*distance, sin(radians)*distance, 0};</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> flight(T_flight), tmp1, tmp2;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  tmp2 = PathPoints.back();   <span class="comment">//skopiuj i usuń ostatni punkt</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  PathPoints.pop_back();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  tmp1 = PathPoints.back();   <span class="comment">//skopiuj i usuń przedostatni punkt</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  PathPoints.pop_back();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  tmp1 = tmp1 + flight;       <span class="comment">//przedłuż je o odpowiedni wektor</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  tmp2 = tmp2 + flight;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  PathPoints.push_back(tmp1);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  PathPoints.push_back(tmp2);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">  184</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">Drone::SpinRotors</a>(<span class="keywordtype">double</span> degrees){</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[0].<a class="code" href="class_hex_prism.html#a6f796b6b5bcd69eaeba7284fc6bfe5ef">Rotate</a>(degrees);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[1].<a class="code" href="class_hex_prism.html#a6f796b6b5bcd69eaeba7284fc6bfe5ef">Rotate</a>(-degrees);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[2].<a class="code" href="class_hex_prism.html#a6f796b6b5bcd69eaeba7284fc6bfe5ef">Rotate</a>(degrees);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[3].<a class="code" href="class_hex_prism.html#a6f796b6b5bcd69eaeba7284fc6bfe5ef">Rotate</a>(-degrees); </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="class_drone.html#a00f69f01bbcde98b37aafd0eb5ff126f">  197</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#a00f69f01bbcde98b37aafd0eb5ff126f">Drone::VerticalFlight</a>(<span class="keywordtype">double</span> distance, <a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a> &amp;Lacze){</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordtype">double</span> inc;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  distance &gt; 0 ? inc=<a class="code" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a> : inc=-<a class="code" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="keywordtype">double</span> T[3] = {0,0,inc};</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> trans(T);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; abs(distance); i+=<a class="code" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a>){</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">SpinRotors</a>(<a class="code" href="drone_8cpp.html#a993f69504bc352b52473ea23fd8e06f1">ROTOR_ROTATE_INC</a>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> = <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> + trans;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    usleep(100000);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a065f5b8402737cc62b0ad4f66d028335">Rysuj</a>();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="class_drone.html#a4c0904848783c4c2a5918834851c1e66">  219</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#a4c0904848783c4c2a5918834851c1e66">Drone::HorizontalFlight</a>(<span class="keywordtype">double</span> distance, <a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a> &amp;Lacze){</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keywordtype">double</span> radians = <a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a> * <a class="code" href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>/180;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordtype">double</span> x_inc = cos(radians) * <a class="code" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keywordtype">double</span> y_inc = sin(radians) * <a class="code" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="keywordtype">double</span> T[3] = {x_inc, y_inc,0};</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> trans(T);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; distance; i+=<a class="code" href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a>){</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">SpinRotors</a>(<a class="code" href="drone_8cpp.html#a993f69504bc352b52473ea23fd8e06f1">ROTOR_ROTATE_INC</a>);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> = <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> + trans;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    usleep(100000);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a065f5b8402737cc62b0ad4f66d028335">Rysuj</a>();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_drone.html#ac9ed6da111bc14d4892acc3df6943f12">  242</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#ac9ed6da111bc14d4892acc3df6943f12">Drone::Rotate</a>(<span class="keywordtype">double</span> degrees, <a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a> &amp;Lacze){</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; degrees; i+=<a class="code" href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">DRONE_ROTATE_INC</a>){</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">SpinRotors</a>(<a class="code" href="drone_8cpp.html#a993f69504bc352b52473ea23fd8e06f1">ROTOR_ROTATE_INC</a>);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a> += <a class="code" href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">DRONE_ROTATE_INC</a>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    usleep(100000);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a065f5b8402737cc62b0ad4f66d028335">Rysuj</a>();</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">  258</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">Drone::CalcDroneGlobalCoords</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <a class="code" href="class_drone.html#ab8695f20d1dd851370bda45a921390f0">CalcBodyGlobalCoords</a>();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i){</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="class_drone.html#af3a82f532aa3fc33d906bd39bc4cd9d1">CalcRotorGlobalCoords</a>(<a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[i]);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="class_drone.html#ae71440afc3e91c989ae07d8cf1a53b83">  270</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#ae71440afc3e91c989ae07d8cf1a53b83">Drone::SetCoordFiles</a>(<span class="keyword">const</span> std::string filenames[7]){</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <a class="code" href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Body</a>.<a class="code" href="class_solid.html#ace141dcdd45eb9db7d34be5eced68caf">SetFileNames</a>(filenames[0], filenames[1]);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[0].<a class="code" href="class_solid.html#ace141dcdd45eb9db7d34be5eced68caf">SetFileNames</a>(filenames[2], filenames[3]);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[1].<a class="code" href="class_solid.html#ace141dcdd45eb9db7d34be5eced68caf">SetFileNames</a>(filenames[2], filenames[4]);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[2].<a class="code" href="class_solid.html#ace141dcdd45eb9db7d34be5eced68caf">SetFileNames</a>(filenames[2], filenames[5]);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[3].<a class="code" href="class_solid.html#ace141dcdd45eb9db7d34be5eced68caf">SetFileNames</a>(filenames[2], filenames[6]);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="class_drone.html#a4f9ab4d6a458e5a65507545e59c401fa">  285</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#a4f9ab4d6a458e5a65507545e59c401fa">Drone::Initiate</a>(<span class="keywordtype">double</span> pos_x, <span class="keywordtype">double</span> pos_y, <span class="keywordtype">double</span> pos_z, <span class="keywordtype">double</span> angle){</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  <span class="keywordtype">double</span> TBody[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {<a class="code" href="drone_8cpp.html#af5db80a9a052aa63732ef6df50fe574f">BODY_POS</a>};</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keywordtype">double</span> TR0[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {<a class="code" href="drone_8cpp.html#af61ccf43e1894fbe0c70c7f73f60c7fa">ROTOR0_POS</a>};</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordtype">double</span> TR1[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {<a class="code" href="drone_8cpp.html#acfbafa9dcc1808f18a1399214d9dfdac">ROTOR1_POS</a>};</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordtype">double</span> TR2[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {<a class="code" href="drone_8cpp.html#ae2cb824c5ab7b717eb380f97f79650c3">ROTOR2_POS</a>};</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="keywordtype">double</span> TR3[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {<a class="code" href="drone_8cpp.html#accc155f938c6df72ce542b92802deeb6">ROTOR3_POS</a>};</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="keywordtype">double</span> TDrone[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {pos_x, pos_y, pos_z};</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> VBody(TBody), VR0(TR0), VR1(TR1), VR2(TR2), VR3(TR3), VDrone(TDrone);    <span class="comment">// pozycje poszczególnych ciał względem drona</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> = VDrone;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a> = angle;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <a class="code" href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Body</a>.<a class="code" href="class_cuboid.html#a948ebc82c9c024cbd7518273dcb2fa7a">SetPosition</a>(VBody, 0);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[0].<a class="code" href="class_hex_prism.html#a836bdf0d94669ee0cdaa97894b6aa7ea">SetPosition</a>(VR0, 0);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[1].<a class="code" href="class_hex_prism.html#a836bdf0d94669ee0cdaa97894b6aa7ea">SetPosition</a>(VR1, 0);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[2].<a class="code" href="class_hex_prism.html#a836bdf0d94669ee0cdaa97894b6aa7ea">SetPosition</a>(VR2, 0);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[3].<a class="code" href="class_hex_prism.html#a836bdf0d94669ee0cdaa97894b6aa7ea">SetPosition</a>(VR3, 0);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  <a class="code" href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Body</a>.<a class="code" href="class_cuboid.html#a29cb59f4f6f3105879dd37274d1b58fc">Initiate</a>(<a class="code" href="drone_8cpp.html#a868fe3df00c1141d6fa5e3696a7686e7">BODY_SCALE</a>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;4; i++){</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <a class="code" href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Rotor</a>[i].<a class="code" href="class_hex_prism.html#a6170c84fd33d2123756204a8b4eaec65">Initiate</a>(<a class="code" href="drone_8cpp.html#ae07a5abaf487d2c2553c2212f2f7e535">ROTOR_SCALE</a>);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="class_drone.html#a199a50ea0de3835d057e1e72dd0c23db">  322</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_drone.html#a199a50ea0de3835d057e1e72dd0c23db">Drone::GoAround</a>(<span class="keywordtype">double</span> radius, <a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a> &amp;Lacze){</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordtype">double</span> T[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {cos(<a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a> * <a class="code" href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>/180) * radius, sin(<a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a> * <a class="code" href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a>/180) * radius, 0};</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> RadiusVector(T);         <span class="comment">// Obracający się wektor</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <a class="code" href="class_drone.html#a00f69f01bbcde98b37aafd0eb5ff126f">VerticalFlight</a>(80, Lacze);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> InitialPos(<a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a>);    <span class="comment">// Zapamiętaj położenie środka okręgu</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <a class="code" href="class_drone.html#a4c0904848783c4c2a5918834851c1e66">HorizontalFlight</a>(radius, Lacze);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <a class="code" href="class_matrix.html">Matrix3x3</a> MatRot;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  MatRot.<a class="code" href="class_matrix.html#a689c1d74df7855657ef8fcd9a09ae93b">RotationMatrix</a>(<a class="code" href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">DRONE_ROTATE_INC</a>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="class_drone.html#ac9ed6da111bc14d4892acc3df6943f12">Rotate</a>(90, Lacze);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 360; i+=<a class="code" href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">DRONE_ROTATE_INC</a>){</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    RadiusVector = MatRot * RadiusVector;   <span class="comment">// Pozycja podczas lotu po okręgu jest sumą wektora położenia środka okręgu</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <a class="code" href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Position</a> = InitialPos + RadiusVector;   <span class="comment">// i obracającego się wektora o długości równej promieniowi   </span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Orientation</a> += <a class="code" href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">DRONE_ROTATE_INC</a>;        </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <a class="code" href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">SpinRotors</a>(<a class="code" href="drone_8cpp.html#a993f69504bc352b52473ea23fd8e06f1">ROTOR_ROTATE_INC</a>);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <a class="code" href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">CalcDroneGlobalCoords</a>();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    usleep(100000);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a065f5b8402737cc62b0ad4f66d028335">Rysuj</a>(); </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <a class="code" href="class_drone.html#ac9ed6da111bc14d4892acc3df6943f12">Rotate</a>(90, Lacze);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <a class="code" href="class_drone.html#a4c0904848783c4c2a5918834851c1e66">HorizontalFlight</a>(radius, Lacze);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <a class="code" href="class_drone.html#a00f69f01bbcde98b37aafd0eb5ff126f">VerticalFlight</a>(-80, Lacze);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno"><a class="line" href="class_drone.html#aa684493917ade1432ff424746afbb3b0">  358</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_drone.html#aa684493917ade1432ff424746afbb3b0">Drone::DetectCollision</a>(<a class="code" href="class_scene_object.html">SceneObject</a> *drone){</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <a class="code" href="class_drone.html">Drone</a>* drone_cast = <span class="keyword">static_cast&lt;</span><a class="code" href="class_drone.html">Drone</a>*<span class="keyword">&gt;</span>(drone);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="keywordflow">if</span>(<span class="keyword">this</span> == drone_cast){     <span class="comment">// zeby dron nie sprawdzał kolizji sam ze sobą</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordtype">double</span> distance = sqrt(pow(<a class="code" href="class_drone.html#a564b1ed854085a4cc7338d87258baba2">ReturnPosition</a>()[0] - drone_cast-&gt;<a class="code" href="class_drone.html#a564b1ed854085a4cc7338d87258baba2">ReturnPosition</a>()[0], 2) + pow(<a class="code" href="class_drone.html#a564b1ed854085a4cc7338d87258baba2">ReturnPosition</a>()[1] - drone_cast-&gt;<a class="code" href="class_drone.html#a564b1ed854085a4cc7338d87258baba2">ReturnPosition</a>()[1], 2));</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordflow">return</span> distance &lt;= 23;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_hex_prism_html_acb29ae89f0ee63fe101a7f3825eb237e"><div class="ttname"><a href="class_hex_prism.html#acb29ae89f0ee63fe101a7f3825eb237e">HexPrism::TransformToParentsCoords</a></div><div class="ttdeci">Vector3D TransformToParentsCoords(const Vector3D &amp;Point) const</div><div class="ttdoc">Przetłumacz współrzędne lokalne graniastosłupa na współrzędne w układzie drona.</div><div class="ttdef"><b>Definition:</b> <a href="hexprism_8cpp_source.html#l00022">hexprism.cpp:22</a></div></div>
+<div class="ttc" id="aclass_drone_html_aa684493917ade1432ff424746afbb3b0"><div class="ttname"><a href="class_drone.html#aa684493917ade1432ff424746afbb3b0">Drone::DetectCollision</a></div><div class="ttdeci">virtual bool DetectCollision(SceneObject *drone) override</div><div class="ttdoc">Detekcja kolizji pomiędzy dwoma dronami.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00358">drone.cpp:358</a></div></div>
+<div class="ttc" id="aclass_drone_html"><div class="ttname"><a href="class_drone.html">Drone</a></div><div class="ttdoc">Modeluje pojęcie dronu.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00020">drone.hh:20</a></div></div>
+<div class="ttc" id="aclass_cuboid_html_a29cb59f4f6f3105879dd37274d1b58fc"><div class="ttname"><a href="class_cuboid.html#a29cb59f4f6f3105879dd37274d1b58fc">Cuboid::Initiate</a></div><div class="ttdeci">virtual void Initiate(double scale_x, double scale_y, double scale_z)</div><div class="ttdoc">Tworzenie prostopadłościanu według bryły wzorcowej i skali.</div><div class="ttdef"><b>Definition:</b> <a href="cuboid_8cpp_source.html#l00043">cuboid.cpp:43</a></div></div>
+<div class="ttc" id="aclass_drone_html_af3a82f532aa3fc33d906bd39bc4cd9d1"><div class="ttname"><a href="class_drone.html#af3a82f532aa3fc33d906bd39bc4cd9d1">Drone::CalcRotorGlobalCoords</a></div><div class="ttdeci">void CalcRotorGlobalCoords(const HexPrism &amp;Rotor) const</div><div class="ttdoc">Oblicz współrzędne globalne rotoru drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00074">drone.cpp:74</a></div></div>
+<div class="ttc" id="aclass_cuboid_html_ab138e2cf81c35eb75fc1e59736e9bf68"><div class="ttname"><a href="class_cuboid.html#ab138e2cf81c35eb75fc1e59736e9bf68">Cuboid::TransformToParentsCoords</a></div><div class="ttdeci">Vector3D TransformToParentsCoords(const Vector3D &amp;Point) const</div><div class="ttdoc">Przetłumacz współrzędne lokalne prostopadłościanu na współrzędne w układzie drona.</div><div class="ttdef"><b>Definition:</b> <a href="cuboid_8cpp_source.html#l00022">cuboid.cpp:22</a></div></div>
+<div class="ttc" id="aclass_drone_html_afbabd8aae4ee3d1e1b2e66b50befe975"><div class="ttname"><a href="class_drone.html#afbabd8aae4ee3d1e1b2e66b50befe975">Drone::Orientation</a></div><div class="ttdeci">double Orientation</div><div class="ttdoc">Kąt obrotu dronu (względem globalnego układu współrzędnych)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00032">drone.hh:32</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_af61ccf43e1894fbe0c70c7f73f60c7fa"><div class="ttname"><a href="drone_8cpp.html#af61ccf43e1894fbe0c70c7f73f60c7fa">ROTOR0_POS</a></div><div class="ttdeci">#define ROTOR0_POS</div><div class="ttdoc">Pozycja 1. rotoru względem drona (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00050">drone.cpp:50</a></div></div>
+<div class="ttc" id="aclass_hex_prism_html"><div class="ttname"><a href="class_hex_prism.html">HexPrism</a></div><div class="ttdoc">Modeluje pojęcie graniastosłupa foremnego sześciokątnego (będącym w tym programie rotorami dronu)</div><div class="ttdef"><b>Definition:</b> <a href="hexprism_8hh_source.html#l00015">hexprism.hh:15</a></div></div>
+<div class="ttc" id="aclass_hex_prism_html_a6f796b6b5bcd69eaeba7284fc6bfe5ef"><div class="ttname"><a href="class_hex_prism.html#a6f796b6b5bcd69eaeba7284fc6bfe5ef">HexPrism::Rotate</a></div><div class="ttdeci">void Rotate(const double rotation)</div><div class="ttdoc">Obracanie graniastosłupa według własnej osi z.</div><div class="ttdef"><b>Definition:</b> <a href="hexprism_8hh_source.html#l00049">hexprism.hh:49</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_af5db80a9a052aa63732ef6df50fe574f"><div class="ttname"><a href="drone_8cpp.html#af5db80a9a052aa63732ef6df50fe574f">BODY_POS</a></div><div class="ttdeci">#define BODY_POS</div><div class="ttdoc">Pozycja korpusu względem drona (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00045">drone.cpp:45</a></div></div>
+<div class="ttc" id="aclass_drone_html_ab8695f20d1dd851370bda45a921390f0"><div class="ttname"><a href="class_drone.html#ab8695f20d1dd851370bda45a921390f0">Drone::CalcBodyGlobalCoords</a></div><div class="ttdeci">void CalcBodyGlobalCoords() const</div><div class="ttdoc">Oblicz współrzędne globalne korpusu drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00096">drone.cpp:96</a></div></div>
+<div class="ttc" id="aclass_drone_html_a199a50ea0de3835d057e1e72dd0c23db"><div class="ttname"><a href="class_drone.html#a199a50ea0de3835d057e1e72dd0c23db">Drone::GoAround</a></div><div class="ttdeci">void GoAround(double radius, PzG::LaczeDoGNUPlota &amp;Lacze)</div><div class="ttdoc">Wzleć do góry, poleć do przodu o pewną odległość, wykonaj lot po okręgu względem punktu do którego dr...</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00322">drone.cpp:322</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_a868fe3df00c1141d6fa5e3696a7686e7"><div class="ttname"><a href="drone_8cpp.html#a868fe3df00c1141d6fa5e3696a7686e7">BODY_SCALE</a></div><div class="ttdeci">#define BODY_SCALE</div><div class="ttdoc">Skala korpusu względem wzorca (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00035">drone.cpp:35</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_a993f69504bc352b52473ea23fd8e06f1"><div class="ttname"><a href="drone_8cpp.html#a993f69504bc352b52473ea23fd8e06f1">ROTOR_ROTATE_INC</a></div><div class="ttdeci">#define ROTOR_ROTATE_INC</div><div class="ttdoc">Kąt, o który obracają się rotory za każdym kolejnym rysowaniem lotu.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00025">drone.cpp:25</a></div></div>
+<div class="ttc" id="aclass_scene_object_html"><div class="ttname"><a href="class_scene_object.html">SceneObject</a></div><div class="ttdef"><b>Definition:</b> <a href="scene__object_8hh_source.html#l00014">scene_object.hh:14</a></div></div>
+<div class="ttc" id="aclass_matrix_html_a689c1d74df7855657ef8fcd9a09ae93b"><div class="ttname"><a href="class_matrix.html#a689c1d74df7855657ef8fcd9a09ae93b">Matrix::RotationMatrix</a></div><div class="ttdeci">void RotationMatrix(double degrees)</div><div class="ttdoc">Obliczanie trójwymiarowej macierzy obrotu.</div><div class="ttdef"><b>Definition:</b> <a href="matrix3x3_8cpp_source.html#l00057">matrix3x3.cpp:57</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_ae2cb824c5ab7b717eb380f97f79650c3"><div class="ttname"><a href="drone_8cpp.html#ae2cb824c5ab7b717eb380f97f79650c3">ROTOR2_POS</a></div><div class="ttdeci">#define ROTOR2_POS</div><div class="ttdoc">Pozycja 3. rotoru względem drona (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00060">drone.cpp:60</a></div></div>
+<div class="ttc" id="aclass_solid_html_afbb5eab8defedf0c3e3e82536be454be"><div class="ttname"><a href="class_solid.html#afbb5eab8defedf0c3e3e82536be454be">Solid::TakeFileName_LocalCoords</a></div><div class="ttdeci">const std::string &amp; TakeFileName_LocalCoords() const</div><div class="ttdoc">Zwracanie nazwy pliku zawierającego lokalne współrzędne bryły.</div><div class="ttdef"><b>Definition:</b> <a href="solid_8hh_source.html#l00054">solid.hh:54</a></div></div>
+<div class="ttc" id="aclass_pz_g_1_1_lacze_do_g_n_u_plota_html"><div class="ttname"><a href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a></div><div class="ttdoc">Klasa realizuje interfejs do programu GNUPlot.</div><div class="ttdef"><b>Definition:</b> <a href="lacze__do__gnuplota_8hh_source.html#l00331">lacze_do_gnuplota.hh:331</a></div></div>
+<div class="ttc" id="aclass_drone_html_abf6c138c26b5f3e8a4264b6357158dbd"><div class="ttname"><a href="class_drone.html#abf6c138c26b5f3e8a4264b6357158dbd">Drone::SpinRotors</a></div><div class="ttdeci">void SpinRotors(double degrees)</div><div class="ttdoc">Obróć każdy z rotorów o pewien kąt w odpowiednim kierunku.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00184">drone.cpp:184</a></div></div>
+<div class="ttc" id="aclass_pz_g_1_1_lacze_do_g_n_u_plota_html_a065f5b8402737cc62b0ad4f66d028335"><div class="ttname"><a href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a065f5b8402737cc62b0ad4f66d028335">PzG::LaczeDoGNUPlota::Rysuj</a></div><div class="ttdeci">bool Rysuj()</div><div class="ttdoc">Generuje polecenie rysowania i przesyła je do gnuplota.</div><div class="ttdef"><b>Definition:</b> <a href="lacze__do__gnuplota_8cpp_source.html#l01451">lacze_do_gnuplota.cpp:1451</a></div></div>
+<div class="ttc" id="aclass_drone_html_a39c9de76c097f460d41a70ba8337081e"><div class="ttname"><a href="class_drone.html#a39c9de76c097f460d41a70ba8337081e">Drone::Body</a></div><div class="ttdeci">Cuboid Body</div><div class="ttdoc">Korpus drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00037">drone.hh:37</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_ace4d8e46488567608885b137c009d402"><div class="ttname"><a href="drone_8cpp.html#ace4d8e46488567608885b137c009d402">FLIGHT_INC</a></div><div class="ttdeci">#define FLIGHT_INC</div><div class="ttdoc">Odległość, którą dron przelatuje za każdym kolejnym rysowaniem lotu.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00020">drone.cpp:20</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_a72bb7169ad1b3955f49be7f607320e79"><div class="ttname"><a href="drone_8cpp.html#a72bb7169ad1b3955f49be7f607320e79">DRONE_ROTATE_INC</a></div><div class="ttdeci">#define DRONE_ROTATE_INC</div><div class="ttdoc">Kąt, o który obraca się dron za każdym kolejnym rysowaniem lotu.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00030">drone.cpp:30</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_acfbafa9dcc1808f18a1399214d9dfdac"><div class="ttname"><a href="drone_8cpp.html#acfbafa9dcc1808f18a1399214d9dfdac">ROTOR1_POS</a></div><div class="ttdeci">#define ROTOR1_POS</div><div class="ttdoc">Pozycja 2. rotoru względem drona (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00055">drone.cpp:55</a></div></div>
+<div class="ttc" id="aclass_drone_html_a095c4233c9415ff2ae084d82c683e263"><div class="ttname"><a href="class_drone.html#a095c4233c9415ff2ae084d82c683e263">Drone::ExtendPath</a></div><div class="ttdeci">void ExtendPath(double distance, std::vector&lt; Vector3D &gt; &amp;PathPoints)</div><div class="ttdoc">Przedłuż ścieżkę</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00161">drone.cpp:161</a></div></div>
+<div class="ttc" id="aclass_hex_prism_html_a6170c84fd33d2123756204a8b4eaec65"><div class="ttname"><a href="class_hex_prism.html#a6170c84fd33d2123756204a8b4eaec65">HexPrism::Initiate</a></div><div class="ttdeci">void Initiate(double scale_x, double scale_y, double scale_z)</div><div class="ttdoc">Tworzenie graniastosłupa według bryły wzorcowej i skali.</div><div class="ttdef"><b>Definition:</b> <a href="hexprism_8cpp_source.html#l00043">hexprism.cpp:43</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_a598a3330b3c21701223ee0ca14316eca"><div class="ttname"><a href="drone_8cpp.html#a598a3330b3c21701223ee0ca14316eca">PI</a></div><div class="ttdeci">#define PI</div><div class="ttdoc">Liczba pi.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00015">drone.cpp:15</a></div></div>
+<div class="ttc" id="asize_8hh_html_a0ae4b10cd6576f2ccf0da832de940dae"><div class="ttname"><a href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a></div><div class="ttdeci">constexpr int SIZE</div><div class="ttdef"><b>Definition:</b> <a href="size_8hh_source.html#l00003">size.hh:3</a></div></div>
+<div class="ttc" id="aclass_drone_html_a4c0904848783c4c2a5918834851c1e66"><div class="ttname"><a href="class_drone.html#a4c0904848783c4c2a5918834851c1e66">Drone::HorizontalFlight</a></div><div class="ttdeci">void HorizontalFlight(double distance, PzG::LaczeDoGNUPlota &amp;Lacze)</div><div class="ttdoc">Wykonaj poziomy lot drona na pewną odległość</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00219">drone.cpp:219</a></div></div>
+<div class="ttc" id="aclass_drone_html_a3b0ad5608addd2eaf22569e2015f5374"><div class="ttname"><a href="class_drone.html#a3b0ad5608addd2eaf22569e2015f5374">Drone::PlanPath</a></div><div class="ttdeci">void PlanPath(double angle, double distance, std::vector&lt; Vector3D &gt; &amp;PathPoints)</div><div class="ttdoc">Zaplanuj ścieżkę przelotu drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00141">drone.cpp:141</a></div></div>
+<div class="ttc" id="aclass_drone_html_a4f9ab4d6a458e5a65507545e59c401fa"><div class="ttname"><a href="class_drone.html#a4f9ab4d6a458e5a65507545e59c401fa">Drone::Initiate</a></div><div class="ttdeci">void Initiate(double pos_x, double pos_y, double pos_z, double angle)</div><div class="ttdoc">Tworzenie drona według brył wzorcowych jego elementów, współrzędnych położenia i kątu obrotu.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00285">drone.cpp:285</a></div></div>
+<div class="ttc" id="aclass_solid_html_a1da25fa89b384857477bbf677ad9cbc1"><div class="ttname"><a href="class_solid.html#a1da25fa89b384857477bbf677ad9cbc1">Solid::TakeFileName_GlobalCoords</a></div><div class="ttdeci">const std::string &amp; TakeFileName_GlobalCoords() const</div><div class="ttdoc">Zwracanie nazwy pliku zawierającego globalne współrzędne bryły.</div><div class="ttdef"><b>Definition:</b> <a href="solid_8hh_source.html#l00059">solid.hh:59</a></div></div>
+<div class="ttc" id="aclass_drone_html_a00f69f01bbcde98b37aafd0eb5ff126f"><div class="ttname"><a href="class_drone.html#a00f69f01bbcde98b37aafd0eb5ff126f">Drone::VerticalFlight</a></div><div class="ttdeci">void VerticalFlight(double distance, PzG::LaczeDoGNUPlota &amp;Lacze)</div><div class="ttdoc">Wykonaj pioniowy lot drona na pewną odległość</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00197">drone.cpp:197</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_ae07a5abaf487d2c2553c2212f2f7e535"><div class="ttname"><a href="drone_8cpp.html#ae07a5abaf487d2c2553c2212f2f7e535">ROTOR_SCALE</a></div><div class="ttdeci">#define ROTOR_SCALE</div><div class="ttdoc">Skala rotoru względem wzorca (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00040">drone.cpp:40</a></div></div>
+<div class="ttc" id="aclass_drone_html_ad681f67940125d81ed33c1c0bf352078"><div class="ttname"><a href="class_drone.html#ad681f67940125d81ed33c1c0bf352078">Drone::CalcDroneGlobalCoords</a></div><div class="ttdeci">void CalcDroneGlobalCoords() const</div><div class="ttdoc">Oblicz współrzędne globalne drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00258">drone.cpp:258</a></div></div>
+<div class="ttc" id="aclass_drone_html_ae71440afc3e91c989ae07d8cf1a53b83"><div class="ttname"><a href="class_drone.html#ae71440afc3e91c989ae07d8cf1a53b83">Drone::SetCoordFiles</a></div><div class="ttdeci">void SetCoordFiles(const std::string filenames[7])</div><div class="ttdoc">Ustal pliki zawierające współrzędne wszystkich elementów drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00270">drone.cpp:270</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector&lt; double, SIZE &gt;</a></div></div>
+<div class="ttc" id="aclass_drone_html_a564b1ed854085a4cc7338d87258baba2"><div class="ttname"><a href="class_drone.html#a564b1ed854085a4cc7338d87258baba2">Drone::ReturnPosition</a></div><div class="ttdeci">Vector3D ReturnPosition() override</div><div class="ttdoc">Wyświetl pozycję drona w globalnym układzie współrzędnych.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00114">drone.hh:114</a></div></div>
+<div class="ttc" id="aclass_hex_prism_html_a836bdf0d94669ee0cdaa97894b6aa7ea"><div class="ttname"><a href="class_hex_prism.html#a836bdf0d94669ee0cdaa97894b6aa7ea">HexPrism::SetPosition</a></div><div class="ttdeci">void SetPosition(const Vector3D Pos, double angle)</div><div class="ttdoc">Ustal pozycję i orientację graniastosłupa (względem układu drona)</div><div class="ttdef"><b>Definition:</b> <a href="hexprism_8hh_source.html#l00044">hexprism.hh:44</a></div></div>
+<div class="ttc" id="aclass_solid_html_ace141dcdd45eb9db7d34be5eced68caf"><div class="ttname"><a href="class_solid.html#ace141dcdd45eb9db7d34be5eced68caf">Solid::SetFileNames</a></div><div class="ttdeci">void SetFileNames(std::string local, std::string global)</div><div class="ttdoc">Ustalanie nazw plików zawierających wspólrzędne danej bryły.</div><div class="ttdef"><b>Definition:</b> <a href="solid_8hh_source.html#l00064">solid.hh:64</a></div></div>
+<div class="ttc" id="adrone_8cpp_html_accc155f938c6df72ce542b92802deeb6"><div class="ttname"><a href="drone_8cpp.html#accc155f938c6df72ce542b92802deeb6">ROTOR3_POS</a></div><div class="ttdeci">#define ROTOR3_POS</div><div class="ttdoc">Pozycja 4. rotoru względem drona (x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00065">drone.cpp:65</a></div></div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Modeluje pojęcie macierzy kwadratowej o dowolnym rozmiarze i typie danych, które ona zawiera.</div><div class="ttdef"><b>Definition:</b> <a href="matrix_8hh_source.html#l00019">matrix.hh:19</a></div></div>
+<div class="ttc" id="aclass_drone_html_a3dc4b4fbd2f8683e5604741834485564"><div class="ttname"><a href="class_drone.html#a3dc4b4fbd2f8683e5604741834485564">Drone::Rotor</a></div><div class="ttdeci">HexPrism Rotor[4]</div><div class="ttdoc">Cztery rotory drona.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00042">drone.hh:42</a></div></div>
+<div class="ttc" id="aclass_drone_html_af34723fceaf081086f320ec14dd0a507"><div class="ttname"><a href="class_drone.html#af34723fceaf081086f320ec14dd0a507">Drone::Position</a></div><div class="ttdeci">Vector3D Position</div><div class="ttdoc">Pozycja dronu (względem globalnego układu współrzędnych)</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00027">drone.hh:27</a></div></div>
+<div class="ttc" id="aclass_cuboid_html_a948ebc82c9c024cbd7518273dcb2fa7a"><div class="ttname"><a href="class_cuboid.html#a948ebc82c9c024cbd7518273dcb2fa7a">Cuboid::SetPosition</a></div><div class="ttdeci">void SetPosition(const Vector3D Pos, double angle)</div><div class="ttdoc">Ustal pozycję i orientację prostopadłościanu (względem układu drona)</div><div class="ttdef"><b>Definition:</b> <a href="cuboid_8hh_source.html#l00046">cuboid.hh:46</a></div></div>
+<div class="ttc" id="aclass_drone_html_a1314477f931465e926532b37b3460ccf"><div class="ttname"><a href="class_drone.html#a1314477f931465e926532b37b3460ccf">Drone::TransformToParentsCoords</a></div><div class="ttdeci">Vector3D TransformToParentsCoords(const Vector3D &amp;Point) const</div><div class="ttdoc">Przetłumacz współrzędne lokalne drona na współrzędne globalne.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00123">drone.cpp:123</a></div></div>
+<div class="ttc" id="aclass_drone_html_ac9ed6da111bc14d4892acc3df6943f12"><div class="ttname"><a href="class_drone.html#ac9ed6da111bc14d4892acc3df6943f12">Drone::Rotate</a></div><div class="ttdeci">void Rotate(double degrees, PzG::LaczeDoGNUPlota &amp;Lacze)</div><div class="ttdoc">Obróc drona o pewien kąt względem własnej osi z.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8cpp_source.html#l00242">drone.cpp:242</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="drone_8cpp.html">drone.cpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

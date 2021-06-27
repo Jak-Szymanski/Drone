@@ -1,0 +1,8 @@
+digraph "Graficzna hierarchia klas"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="doctest::detail::has\l_insertion_operator_impl\l::check\< T, decltype(os\l()\<\< val\< T \>(), void())\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdoctest_1_1detail_1_1has__insertion__operator__impl_1_1check_3_01_t_00_01decltype_07os_07_8d91d0ae55ab2b557e111ab3ba9c02da.html",tooltip=" "];
+}

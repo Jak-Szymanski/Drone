@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: Plik źródłowy scene.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('scene_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">scene.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="scene_8cpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../inc/scene.hh&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../inc/slope.hh&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../inc/peak.hh&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../inc/flat.hh&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="scene_8cpp.html#a1debb8ca62b468f6970a1f9f74412dfb">   17</a></span>&#160;<span class="preprocessor">#define PLIK_WLASCIWY_PRZESZKODA         &quot;../datasets/PlikWlasciwy_Przeszkoda&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="scene_8cpp.html#ae92aa321c4dfe9fe8584397313e6365c">   22</a></span>&#160;<span class="preprocessor">#define PLIK_ROBOCZY_PRZESZKODA          &quot;../datasets/PlikRoboczy_Przeszkoda&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="scene_8cpp.html#a7689e0a9ddf928cb026f23ecec8fbd66">   27</a></span>&#160;<span class="preprocessor">#define FORMAT_PLIKU                &quot;.dat&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_scene.html#aea1df0f9cc40206409391e42bdd1fe9d">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scene.html#aea1df0f9cc40206409391e42bdd1fe9d">Scene::AddDrone</a>(<a class="code" href="class_drone.html">Drone</a> *new_drone) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>.push_back(new_drone); </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.push_back(std::shared_ptr&lt;Drone&gt;(new_drone));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_scene.html#adfd7a485c21fbe19d8cfc17f3b92e16f">   49</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scene.html#adfd7a485c21fbe19d8cfc17f3b92e16f">Scene::AddObject</a>(<a class="code" href="class_vector.html">Vector3D</a> scale, <span class="keywordtype">double</span> pos_x, <span class="keywordtype">double</span> pos_y, <span class="keywordtype">int</span> <a class="code" href="doctest_8cpp.html#a75b160f574a0be26114bae2c7686a5e1">type</a>, <a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a> &amp;Lacze){</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                                <span class="comment">/*  v-- numer przeszkody dopisany do nazwy pliku--v  */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::string localfile = std::string(<a class="code" href="scene_8cpp.html#ae92aa321c4dfe9fe8584397313e6365c">PLIK_ROBOCZY_PRZESZKODA</a>) + std::to_string(<a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.size() - <a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>.size()) + <a class="code" href="scene_8cpp.html#a7689e0a9ddf928cb026f23ecec8fbd66">FORMAT_PLIKU</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  std::string globalfile = std::string(<a class="code" href="scene_8cpp.html#a1debb8ca62b468f6970a1f9f74412dfb">PLIK_WLASCIWY_PRZESZKODA</a>) + std::to_string(<a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.size() - <a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>.size()) + <a class="code" href="scene_8cpp.html#a7689e0a9ddf928cb026f23ecec8fbd66">FORMAT_PLIKU</a>; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  std::shared_ptr&lt;SceneObject&gt; tmp;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">switch</span>(<a class="code" href="doctest_8cpp.html#a75b160f574a0be26114bae2c7686a5e1">type</a>){</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">case</span> 1:{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      tmp = std::make_shared&lt;Peak&gt;(<a class="code" href="class_peak.html">Peak</a>(scale, pos_x, pos_y, localfile, globalfile));   <span class="comment">// gora ze szczytem</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">case</span> 2:{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      tmp = std::make_shared&lt;Slope&gt;(<a class="code" href="class_slope.html">Slope</a>(scale, pos_x, pos_y, localfile, globalfile)); <span class="comment">// gora z grania</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">case</span> 3:{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      tmp = std::make_shared&lt;Flat&gt;(<a class="code" href="class_flat.html">Flat</a>(scale, pos_x, pos_y, localfile, globalfile));   <span class="comment">// plaskowyz</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Niepoprawny typ przeszkody!&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.push_back(tmp);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#aa815ce8ec16e12fc246cf422e562869e">DodajNazwePliku</a>(globalfile.c_str());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_scene.html#adbb7f2f8d8dc6bdda9bfb730c2661e48">   86</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scene.html#adbb7f2f8d8dc6bdda9bfb730c2661e48">Scene::MoveObject</a>(<span class="keywordtype">double</span> pos_x, <span class="keywordtype">double</span> pos_y, <span class="keywordtype">int</span> index){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  std::list&lt;std::shared_ptr&lt;SceneObject&gt;&gt;::iterator it = <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.begin();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  std::advance(it, index + <a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>.size() - 1); </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">double</span> T[<a class="code" href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a>] = {pos_x, pos_y, 0};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <a class="code" href="class_vector.html">Vector3D</a> Pos(T);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  it-&gt;get()-&gt;SetPosition(Pos, it-&gt;get()-&gt;ReturnOrientation());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  it-&gt;get()-&gt;CalcGlobalCoords(); </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_scene.html#a3baedef3c6021521ff409e7ead0d4f32">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scene.html#a3baedef3c6021521ff409e7ead0d4f32">Scene::DeleteObject</a>(<span class="keywordtype">int</span> index, <a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a> &amp;Lacze){</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::list&lt;std::shared_ptr&lt;SceneObject&gt;&gt;::iterator it = <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.begin();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::advance(it, index + <a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>.size() - 1);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  std::string local = it-&gt;get()-&gt;TakeFileName_LocalCoords();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  std::string global = it-&gt;get()-&gt;TakeFileName_GlobalCoords();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a7fa4e775e1aee74869fae174c567c2a6">UsunNazwePliku</a>(local);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  Lacze.<a class="code" href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a7fa4e775e1aee74869fae174c567c2a6">UsunNazwePliku</a>(global);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  remove(local.c_str());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  remove(global.c_str());</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.erase(it);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_scene.html#a3c84c194e26b620393f103f504ad112a">  120</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_scene.html#a3c84c194e26b620393f103f504ad112a">Scene::PrintObjects</a>(){</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.size() == <a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>.size()) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">int</span> j = 1;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordflow">for</span>(std::list&lt;std::shared_ptr&lt;SceneObject&gt;&gt;::iterator it = <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.begin(); it != <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.end(); ++it){</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span>(it-&gt;get()-&gt;ReturnType() != <span class="stringliteral">&quot;Dron&quot;</span>){</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      std::cout &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot;. Polozenie: &quot;</span> &lt;&lt; it-&gt;get()-&gt;ReturnPosition() &lt;&lt; <span class="stringliteral">&quot;\tTyp:&quot;</span> &lt;&lt; it-&gt;get()-&gt;ReturnType() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      ++j;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="class_scene.html#a3b8cec2e32546713915f8c6303c951f1">  138</a></span>&#160;<a class="code" href="class_scene.html#a3b8cec2e32546713915f8c6303c951f1">Scene::~Scene</a>(){</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordflow">for</span>(std::list&lt;std::shared_ptr&lt;SceneObject&gt;&gt;::iterator it = <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.begin(); it != <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.end(); ++it){</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">if</span>(it-&gt;get()-&gt;ReturnType() != <span class="stringliteral">&quot;Dron&quot;</span>){</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      remove(it-&gt;get()-&gt;TakeFileName_GlobalCoords().c_str());</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      remove(it-&gt;get()-&gt;TakeFileName_LocalCoords().c_str());</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="class_scene.html#acefd66e2cda51ebd65ee7e16592e7c8e">  152</a></span>&#160;std::string <a class="code" href="class_scene.html#acefd66e2cda51ebd65ee7e16592e7c8e">Scene::CheckCollision</a>(){</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">for</span>(std::list&lt;std::shared_ptr&lt;SceneObject&gt;&gt;::iterator it = <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.begin(); it != <a class="code" href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">ObjectList</a>.end(); ++it){</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <span class="keywordflow">if</span>(it-&gt;get()-&gt;DetectCollision(<a class="code" href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">DroneArray</a>[<a class="code" href="class_scene.html#a4797e7554360224256ce3d1ebd522eee">ActiveDrone</a>]) ){</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span> it-&gt;get()-&gt;ReturnType(); </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_drone_html"><div class="ttname"><a href="class_drone.html">Drone</a></div><div class="ttdoc">Modeluje pojęcie dronu.</div><div class="ttdef"><b>Definition:</b> <a href="drone_8hh_source.html#l00020">drone.hh:20</a></div></div>
+<div class="ttc" id="aclass_scene_html_a40417cd265adbf45c124a4e37a4eface"><div class="ttname"><a href="class_scene.html#a40417cd265adbf45c124a4e37a4eface">Scene::DroneArray</a></div><div class="ttdeci">std::vector&lt; Drone * &gt; DroneArray</div><div class="ttdoc">Kontener zawierający wszystkie używane drony.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8hh_source.html#l00025">scene.hh:25</a></div></div>
+<div class="ttc" id="aclass_peak_html"><div class="ttname"><a href="class_peak.html">Peak</a></div><div class="ttdoc">Modeluje pojęcie gory ze szczytem.</div><div class="ttdef"><b>Definition:</b> <a href="peak_8hh_source.html#l00015">peak.hh:15</a></div></div>
+<div class="ttc" id="aclass_scene_html_adfd7a485c21fbe19d8cfc17f3b92e16f"><div class="ttname"><a href="class_scene.html#adfd7a485c21fbe19d8cfc17f3b92e16f">Scene::AddObject</a></div><div class="ttdeci">void AddObject(Vector3D scale, double pos_x, double pos_y, int type, PzG::LaczeDoGNUPlota &amp;Lacze)</div><div class="ttdoc">Dodaj nową przeszkodę na powierzchni.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00049">scene.cpp:49</a></div></div>
+<div class="ttc" id="aclass_scene_html_aea1df0f9cc40206409391e42bdd1fe9d"><div class="ttname"><a href="class_scene.html#aea1df0f9cc40206409391e42bdd1fe9d">Scene::AddDrone</a></div><div class="ttdeci">void AddDrone(Drone *new_drone)</div><div class="ttdoc">Dodaj nowego drona do sceny.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00035">scene.cpp:35</a></div></div>
+<div class="ttc" id="aclass_pz_g_1_1_lacze_do_g_n_u_plota_html_a7fa4e775e1aee74869fae174c567c2a6"><div class="ttname"><a href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#a7fa4e775e1aee74869fae174c567c2a6">PzG::LaczeDoGNUPlota::UsunNazwePliku</a></div><div class="ttdeci">bool UsunNazwePliku(const InfoPlikuDoRysowania *wInfoPliku, TypDostepuDoZasobu Dostep=DZ_Lokalny)</div><div class="ttdoc">Usuwa z listy nazw plików z danymi do rysowania usuwa wybraną nazwę.</div><div class="ttdef"><b>Definition:</b> <a href="lacze__do__gnuplota_8cpp_source.html#l00132">lacze_do_gnuplota.cpp:132</a></div></div>
+<div class="ttc" id="aclass_scene_html_a3c84c194e26b620393f103f504ad112a"><div class="ttname"><a href="class_scene.html#a3c84c194e26b620393f103f504ad112a">Scene::PrintObjects</a></div><div class="ttdeci">bool PrintObjects()</div><div class="ttdoc">Wyświetl listę wszystkich przeszkód.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00120">scene.cpp:120</a></div></div>
+<div class="ttc" id="ascene_8cpp_html_ae92aa321c4dfe9fe8584397313e6365c"><div class="ttname"><a href="scene_8cpp.html#ae92aa321c4dfe9fe8584397313e6365c">PLIK_ROBOCZY_PRZESZKODA</a></div><div class="ttdeci">#define PLIK_ROBOCZY_PRZESZKODA</div><div class="ttdoc">Domyślna nazwa pliku ze wspolrzednymi lokalnymi przeszkody.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00022">scene.cpp:22</a></div></div>
+<div class="ttc" id="aclass_slope_html"><div class="ttname"><a href="class_slope.html">Slope</a></div><div class="ttdoc">Modeluje pojęcie gory z grania.</div><div class="ttdef"><b>Definition:</b> <a href="slope_8hh_source.html#l00015">slope.hh:15</a></div></div>
+<div class="ttc" id="aclass_flat_html"><div class="ttname"><a href="class_flat.html">Flat</a></div><div class="ttdoc">Modeluje pojęcie plaskowyzu.</div><div class="ttdef"><b>Definition:</b> <a href="flat_8hh_source.html#l00015">flat.hh:15</a></div></div>
+<div class="ttc" id="aclass_pz_g_1_1_lacze_do_g_n_u_plota_html"><div class="ttname"><a href="class_pz_g_1_1_lacze_do_g_n_u_plota.html">PzG::LaczeDoGNUPlota</a></div><div class="ttdoc">Klasa realizuje interfejs do programu GNUPlot.</div><div class="ttdef"><b>Definition:</b> <a href="lacze__do__gnuplota_8hh_source.html#l00331">lacze_do_gnuplota.hh:331</a></div></div>
+<div class="ttc" id="aclass_scene_html_a3b8cec2e32546713915f8c6303c951f1"><div class="ttname"><a href="class_scene.html#a3b8cec2e32546713915f8c6303c951f1">Scene::~Scene</a></div><div class="ttdeci">~Scene()</div><div class="ttdoc">Dekonstruktor usuwa wszystkie przeszkody.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00138">scene.cpp:138</a></div></div>
+<div class="ttc" id="aclass_scene_html_a4797e7554360224256ce3d1ebd522eee"><div class="ttname"><a href="class_scene.html#a4797e7554360224256ce3d1ebd522eee">Scene::ActiveDrone</a></div><div class="ttdeci">unsigned int ActiveDrone</div><div class="ttdoc">Indeks aktywnego drona wewnątrz kontenera.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8hh_source.html#l00030">scene.hh:30</a></div></div>
+<div class="ttc" id="aclass_scene_html_a3baedef3c6021521ff409e7ead0d4f32"><div class="ttname"><a href="class_scene.html#a3baedef3c6021521ff409e7ead0d4f32">Scene::DeleteObject</a></div><div class="ttdeci">void DeleteObject(int index, PzG::LaczeDoGNUPlota &amp;Lacze)</div><div class="ttdoc">Usun daną przeszkodę z powierzchni.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00102">scene.cpp:102</a></div></div>
+<div class="ttc" id="ascene_8cpp_html_a1debb8ca62b468f6970a1f9f74412dfb"><div class="ttname"><a href="scene_8cpp.html#a1debb8ca62b468f6970a1f9f74412dfb">PLIK_WLASCIWY_PRZESZKODA</a></div><div class="ttdeci">#define PLIK_WLASCIWY_PRZESZKODA</div><div class="ttdoc">Domyślna nazwa pliku ze wspolrzednymi globalnymi przeszkody.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00017">scene.cpp:17</a></div></div>
+<div class="ttc" id="asize_8hh_html_a0ae4b10cd6576f2ccf0da832de940dae"><div class="ttname"><a href="size_8hh.html#a0ae4b10cd6576f2ccf0da832de940dae">SIZE</a></div><div class="ttdeci">constexpr int SIZE</div><div class="ttdef"><b>Definition:</b> <a href="size_8hh_source.html#l00003">size.hh:3</a></div></div>
+<div class="ttc" id="aclass_pz_g_1_1_lacze_do_g_n_u_plota_html_aa815ce8ec16e12fc246cf422e562869e"><div class="ttname"><a href="class_pz_g_1_1_lacze_do_g_n_u_plota.html#aa815ce8ec16e12fc246cf422e562869e">PzG::LaczeDoGNUPlota::DodajNazwePliku</a></div><div class="ttdeci">InfoPlikuDoRysowania &amp; DodajNazwePliku(const char *sNazwaPliku, bool SprawdzIstnienie=false, TypDostepuDoZasobu Dostep=DZ_Lokalny)</div><div class="ttdoc">Dodaje nazwę pliku.</div><div class="ttdef"><b>Definition:</b> <a href="lacze__do__gnuplota_8cpp_source.html#l00332">lacze_do_gnuplota.cpp:332</a></div></div>
+<div class="ttc" id="aclass_scene_html_a5eb221afa9954e9870fdb96f16a13326"><div class="ttname"><a href="class_scene.html#a5eb221afa9954e9870fdb96f16a13326">Scene::ObjectList</a></div><div class="ttdeci">std::list&lt; std::shared_ptr&lt; SceneObject &gt; &gt; ObjectList</div><div class="ttdoc">Lista wszystkich obiektów sceny (drony oraz przeszkody)</div><div class="ttdef"><b>Definition:</b> <a href="scene_8hh_source.html#l00035">scene.hh:35</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector&lt; double, SIZE &gt;</a></div></div>
+<div class="ttc" id="aclass_scene_html_acefd66e2cda51ebd65ee7e16592e7c8e"><div class="ttname"><a href="class_scene.html#acefd66e2cda51ebd65ee7e16592e7c8e">Scene::CheckCollision</a></div><div class="ttdeci">std::string CheckCollision()</div><div class="ttdoc">Sprawdzanie czy aktywny dron może wylądować</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00152">scene.cpp:152</a></div></div>
+<div class="ttc" id="aclass_scene_html_adbb7f2f8d8dc6bdda9bfb730c2661e48"><div class="ttname"><a href="class_scene.html#adbb7f2f8d8dc6bdda9bfb730c2661e48">Scene::MoveObject</a></div><div class="ttdeci">void MoveObject(double pos_x, double pos_y, int index)</div><div class="ttdoc">Zmien polozenie danej przeszkody.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00086">scene.cpp:86</a></div></div>
+<div class="ttc" id="ascene_8cpp_html_a7689e0a9ddf928cb026f23ecec8fbd66"><div class="ttname"><a href="scene_8cpp.html#a7689e0a9ddf928cb026f23ecec8fbd66">FORMAT_PLIKU</a></div><div class="ttdeci">#define FORMAT_PLIKU</div><div class="ttdoc">Format pliku ze wspolrzednymi.</div><div class="ttdef"><b>Definition:</b> <a href="scene_8cpp_source.html#l00027">scene.cpp:27</a></div></div>
+<div class="ttc" id="adoctest_8cpp_html_a75b160f574a0be26114bae2c7686a5e1"><div class="ttname"><a href="doctest_8cpp.html#a75b160f574a0be26114bae2c7686a5e1">type</a></div><div class="ttdeci">std::string type</div><div class="ttdef"><b>Definition:</b> <a href="doctest_8cpp_source.html#l02572">doctest.cpp:2572</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="scene_8cpp.html">scene.cpp</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

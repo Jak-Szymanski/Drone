@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Drone 3: Plik źródłowy vector.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Drone 3
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('vector_8hh_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">vector.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vector_8hh.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="size_8hh.html">size.hh</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="vector_8hh.html#a5fe46f1cba27f30988a9b549f4ca69f8">   17</a></span>&#160;<span class="preprocessor">#define MIN_DIFF 0.01</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_vector.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_vector.html">Vector</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">   30</a></span>&#160;    Type <a class="code" href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">size</a>[Size];</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">   35</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">ActiveNumVectors</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">   40</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">AllNumVectors</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector</a>(Type [Size]);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector</a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;vec);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_vector.html#a9b517d27225dfc398b506bd813887a99">~Vector</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_vector.html#ada262cb9a2d6705f3037aa642eb1f0c0">   67</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_vector.html#ada262cb9a2d6705f3037aa642eb1f0c0">ReturnActiveNumVectors</a>() {<span class="keywordflow">return</span> <a class="code" href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">ActiveNumVectors</a>;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_vector.html#a55eba486f96f978032da869b56db4b01">   72</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_vector.html#a55eba486f96f978032da869b56db4b01">ReturnAllNumVectors</a>() {<span class="keywordflow">return</span> <a class="code" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">AllNumVectors</a>;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_vector.html#a7820b202924439ac13c3b5318dc5c114">   77</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_vector.html#a7820b202924439ac13c3b5318dc5c114">ClearAllNumVectors</a>() {<a class="code" href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">AllNumVectors</a> = 0;}; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#a838abd1bbdc9a14ab55ffd2be67c0ce7">operator + </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#a4dc50f876b3632e0d4cedef81802ee56">operator - </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#aed2de7957e94df45f52c5304ac0e6e0d">operator * </a>(<span class="keyword">const</span> Type &amp;tmp);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#aed2de7957e94df45f52c5304ac0e6e0d">operator * </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#a469bf267f52bd18b5b9f27cd748c26b0">operator / </a>(<span class="keyword">const</span> Type &amp;tmp);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#afffa3c29ffb257461dca0bdf1ca2ff95">operator = </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">const</span> Type &amp;<a class="code" href="class_vector.html#ab78c9236015beff4d79df3c79bd8dbd4">operator [] </a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    Type &amp;<a class="code" href="class_vector.html#ab78c9236015beff4d79df3c79bd8dbd4">operator [] </a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_vector.html#a1ea57e6cf7e44048b985e60784d079e1">operator == </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_vector.html#abeca77a2965c8b47a37faa11e76d793f">Distance</a> (<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v1, <span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v2);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;};</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_vector.html">Vector&lt;Type,Size&gt;::ActiveNumVectors</a>=0;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_vector.html">Vector&lt;Type,Size&gt;::AllNumVectors</a>=0;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<a class="code" href="doctest_8h.html#a116af65cb5e924b33ad9d9ecd7a783f3">std::ostream</a> &amp;<a class="code" href="vector_8hh.html#a5338a3338c70d6bdb43de2a2504f8e96">operator &lt;&lt; </a>(<a class="code" href="doctest_8h.html#a116af65cb5e924b33ad9d9ecd7a783f3">std::ostream</a> &amp;out, <a class="code" href="class_vector.html">Vector&lt;double, SIZE&gt;</a> <span class="keyword">const</span> &amp;tmp);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;std::istream &amp;<a class="code" href="vector_8hh.html#a8beb49beaa3fe317ed994b30fe7553f3">operator &gt;&gt; </a>(std::istream &amp;in, <a class="code" href="class_vector.html">Vector&lt;double, SIZE&gt;</a> &amp;tmp);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">  153</a></span>&#160;<a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector&lt;Type, Size&gt;::Vector</a>() {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        size[i] = 0;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_vector.html#a8250570b8cbbac29d9984413ae34b29b">  166</a></span>&#160;<a class="code" href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector&lt;Type, Size&gt;::Vector</a>(Type tmp[Size]) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        size[i] = tmp[i];</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="class_vector.html#a838abd1bbdc9a14ab55ffd2be67c0ce7">  182</a></span>&#160;<a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#a838abd1bbdc9a14ab55ffd2be67c0ce7">Vector&lt;Type, Size&gt;::operator + </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v) {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> result;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        result[i] = size[i] + v[i];</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="class_vector.html#a4dc50f876b3632e0d4cedef81802ee56">  199</a></span>&#160;<a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#a4dc50f876b3632e0d4cedef81802ee56">Vector&lt;Type, Size&gt;::operator - </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i) {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        size[i] -= v[i];</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;}</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="class_vector.html#aed2de7957e94df45f52c5304ac0e6e0d">  215</a></span>&#160;<a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#aed2de7957e94df45f52c5304ac0e6e0d">Vector&lt;Type, Size&gt;::operator * </a>(<span class="keyword">const</span> Type &amp;c) {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        size[i] *= c;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="class_vector.html#a882b30054590e4e4d924a1159ccc25a0">  224</a></span>&#160;<a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#aed2de7957e94df45f52c5304ac0e6e0d">Vector&lt;Type, Size&gt;::operator * </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> result;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i){</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        result[i] = size[i] * v[i];</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="class_vector.html#a469bf267f52bd18b5b9f27cd748c26b0">  241</a></span>&#160;<a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#a469bf267f52bd18b5b9f27cd748c26b0">Vector&lt;Type, Size&gt;::operator / </a>(<span class="keyword">const</span> Type &amp;tmp) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        size[i] /= tmp;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_vector.html#afffa3c29ffb257461dca0bdf1ca2ff95">  250</a></span>&#160;<a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> <a class="code" href="class_vector.html#afffa3c29ffb257461dca0bdf1ca2ff95">Vector&lt;Type, Size&gt;::operator = </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v){</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i){</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        size[i] = v[i];</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="class_vector.html#ab78c9236015beff4d79df3c79bd8dbd4">  266</a></span>&#160;<span class="keyword">const</span> Type &amp;<a class="code" href="class_vector.html#ab78c9236015beff4d79df3c79bd8dbd4">Vector&lt;Type, Size&gt;::operator [] </a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> (index &gt;= Size) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: Wektor jest poza zasiegiem \n&quot;</span>);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> size[index];</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="class_vector.html#a5a6354ef1fb2c630f28baea2d9f8c0b4">  282</a></span>&#160;Type &amp;<a class="code" href="class_vector.html#ab78c9236015beff4d79df3c79bd8dbd4">Vector&lt;Type, Size&gt;::operator[]</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">const_cast&lt;</span>Type &amp;<span class="keyword">&gt;</span>(<span class="keyword">const_cast&lt;</span><span class="keyword">const </span><a class="code" href="class_vector.html">Vector</a> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;<span class="keyword">operator</span>[](index));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;}</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="class_vector.html#a1ea57e6cf7e44048b985e60784d079e1">  294</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_vector.html#a1ea57e6cf7e44048b985e60784d079e1">Vector&lt;Type, Size&gt;::operator == </a>(<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i){</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">if</span>(abs(size[i] - v[i]) &gt; <a class="code" href="vector_8hh.html#a5fe46f1cba27f30988a9b549f4ca69f8">MIN_DIFF</a>){</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> 1;     </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> Size&gt;</div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="vector_8hh.html#aa87b0c7cdf36a45faba3f90123c8d51f">  312</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="vector_8hh.html#aa87b0c7cdf36a45faba3f90123c8d51f">Distance</a> (<span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v1, <span class="keyword">const</span> <a class="code" href="class_vector.html">Vector&lt;Type, Size&gt;</a> &amp;v2){</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordtype">double</span> result = 0;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Size; ++i){</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        result += pow((v1[i] - v2[i]),2);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    result = sqrt(result);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span> result; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_vector_html_a55eba486f96f978032da869b56db4b01"><div class="ttname"><a href="class_vector.html#a55eba486f96f978032da869b56db4b01">Vector::ReturnAllNumVectors</a></div><div class="ttdeci">static int ReturnAllNumVectors()</div><div class="ttdoc">Zwróc liczbę wszystkich wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00072">vector.hh:72</a></div></div>
+<div class="ttc" id="aclass_vector_html_aed2de7957e94df45f52c5304ac0e6e0d"><div class="ttname"><a href="class_vector.html#aed2de7957e94df45f52c5304ac0e6e0d">Vector::operator*</a></div><div class="ttdeci">Vector&lt; Type, Size &gt; operator*(const Type &amp;tmp)</div><div class="ttdoc">Przeciążenie operatora mnożenia wektora przez zmienną</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00215">vector.hh:215</a></div></div>
+<div class="ttc" id="avector_8hh_html_aa87b0c7cdf36a45faba3f90123c8d51f"><div class="ttname"><a href="vector_8hh.html#aa87b0c7cdf36a45faba3f90123c8d51f">Distance</a></div><div class="ttdeci">double Distance(const Vector&lt; Type, Size &gt; &amp;v1, const Vector&lt; Type, Size &gt; &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00312">vector.hh:312</a></div></div>
+<div class="ttc" id="asize_8hh_html"><div class="ttname"><a href="size_8hh.html">size.hh</a></div></div>
+<div class="ttc" id="aclass_vector_html_a8ea57302b44e1d62b6bebe5fa593de3c"><div class="ttname"><a href="class_vector.html#a8ea57302b44e1d62b6bebe5fa593de3c">Vector::size</a></div><div class="ttdeci">Type size[Size]</div><div class="ttdoc">Tablica wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00030">vector.hh:30</a></div></div>
+<div class="ttc" id="avector_8hh_html_a5338a3338c70d6bdb43de2a2504f8e96"><div class="ttname"><a href="vector_8hh.html#a5338a3338c70d6bdb43de2a2504f8e96">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, Vector&lt; double, SIZE &gt; const &amp;tmp)</div><div class="ttdoc">Przeciążenie operatora przesunięcia bitowego w lewo dla wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector3_d_8cpp_source.html#l00015">vector3D.cpp:15</a></div></div>
+<div class="ttc" id="aclass_vector_html_a7820b202924439ac13c3b5318dc5c114"><div class="ttname"><a href="class_vector.html#a7820b202924439ac13c3b5318dc5c114">Vector::ClearAllNumVectors</a></div><div class="ttdeci">static void ClearAllNumVectors()</div><div class="ttdoc">Wyzeruj liczbę wszystkich wektorów (używane jedynie do testów)</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00077">vector.hh:77</a></div></div>
+<div class="ttc" id="aclass_vector_html_ada262cb9a2d6705f3037aa642eb1f0c0"><div class="ttname"><a href="class_vector.html#ada262cb9a2d6705f3037aa642eb1f0c0">Vector::ReturnActiveNumVectors</a></div><div class="ttdeci">static int ReturnActiveNumVectors()</div><div class="ttdoc">Zwróć liczbę aktywnych wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00067">vector.hh:67</a></div></div>
+<div class="ttc" id="aclass_vector_html_abeca77a2965c8b47a37faa11e76d793f"><div class="ttname"><a href="class_vector.html#abeca77a2965c8b47a37faa11e76d793f">Vector::Distance</a></div><div class="ttdeci">double Distance(const Vector&lt; Type, Size &gt; &amp;v1, const Vector&lt; Type, Size &gt; &amp;v2)</div><div class="ttdoc">Wyznacza odległość między dwoma punktami zapisanymi jako wektory.</div></div>
+<div class="ttc" id="adoctest_8h_html_a116af65cb5e924b33ad9d9ecd7a783f3"><div class="ttname"><a href="doctest_8h.html#a116af65cb5e924b33ad9d9ecd7a783f3">ostream</a></div><div class="ttdeci">basic_ostream&lt; char, char_traits&lt; char &gt; &gt; ostream</div><div class="ttdef"><b>Definition:</b> <a href="doctest_8h_source.html#l00425">doctest.h:425</a></div></div>
+<div class="ttc" id="aclass_vector_html_ab78c9236015beff4d79df3c79bd8dbd4"><div class="ttname"><a href="class_vector.html#ab78c9236015beff4d79df3c79bd8dbd4">Vector::operator[]</a></div><div class="ttdeci">const Type &amp; operator[](unsigned int index) const</div><div class="ttdoc">Przeciążenie operatora indeksowania wektora (zwraca zmienną const)</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00266">vector.hh:266</a></div></div>
+<div class="ttc" id="aclass_vector_html_a9b517d27225dfc398b506bd813887a99"><div class="ttname"><a href="class_vector.html#a9b517d27225dfc398b506bd813887a99">Vector::~Vector</a></div><div class="ttdeci">~Vector()</div><div class="ttdoc">Dekonstruktor wektora.</div></div>
+<div class="ttc" id="aclass_vector_html_aa70ff8ac28b042379c8a7d7298289b19"><div class="ttname"><a href="class_vector.html#aa70ff8ac28b042379c8a7d7298289b19">Vector::AllNumVectors</a></div><div class="ttdeci">static int AllNumVectors</div><div class="ttdoc">Liczba wszystkich wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00040">vector.hh:40</a></div></div>
+<div class="ttc" id="aclass_vector_html_a838abd1bbdc9a14ab55ffd2be67c0ce7"><div class="ttname"><a href="class_vector.html#a838abd1bbdc9a14ab55ffd2be67c0ce7">Vector::operator+</a></div><div class="ttdeci">Vector&lt; Type, Size &gt; operator+(const Vector&lt; Type, Size &gt; &amp;v)</div><div class="ttdoc">Przeciążenie operatora dodawania dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00182">vector.hh:182</a></div></div>
+<div class="ttc" id="aclass_vector_html_a469bf267f52bd18b5b9f27cd748c26b0"><div class="ttname"><a href="class_vector.html#a469bf267f52bd18b5b9f27cd748c26b0">Vector::operator/</a></div><div class="ttdeci">Vector&lt; Type, Size &gt; operator/(const Type &amp;tmp)</div><div class="ttdoc">Przeciążenie operatora dzielenia wektora przez zmienną</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00241">vector.hh:241</a></div></div>
+<div class="ttc" id="aclass_vector_html_a1ea57e6cf7e44048b985e60784d079e1"><div class="ttname"><a href="class_vector.html#a1ea57e6cf7e44048b985e60784d079e1">Vector::operator==</a></div><div class="ttdeci">bool operator==(const Vector&lt; Type, Size &gt; &amp;v) const</div><div class="ttdoc">Przeciążenie operatora porównania dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00294">vector.hh:294</a></div></div>
+<div class="ttc" id="aclass_vector_html_a4dc50f876b3632e0d4cedef81802ee56"><div class="ttname"><a href="class_vector.html#a4dc50f876b3632e0d4cedef81802ee56">Vector::operator-</a></div><div class="ttdeci">Vector&lt; Type, Size &gt; operator-(const Vector&lt; Type, Size &gt; &amp;v)</div><div class="ttdoc">Przeciążenie operatora odejmowania dwóch wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00199">vector.hh:199</a></div></div>
+<div class="ttc" id="aclass_vector_html_ae3c0485e4386eb680daa90dd62299fd2"><div class="ttname"><a href="class_vector.html#ae3c0485e4386eb680daa90dd62299fd2">Vector::Vector</a></div><div class="ttdeci">Vector()</div><div class="ttdoc">Konstruktor bezparametryczny wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00153">vector.hh:153</a></div></div>
+<div class="ttc" id="avector_8hh_html_a5fe46f1cba27f30988a9b549f4ca69f8"><div class="ttname"><a href="vector_8hh.html#a5fe46f1cba27f30988a9b549f4ca69f8">MIN_DIFF</a></div><div class="ttdeci">#define MIN_DIFF</div><div class="ttdoc">Dokładność z którą są porównywane współrzędne wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00017">vector.hh:17</a></div></div>
+<div class="ttc" id="aclass_vector_html_afffa3c29ffb257461dca0bdf1ca2ff95"><div class="ttname"><a href="class_vector.html#afffa3c29ffb257461dca0bdf1ca2ff95">Vector::operator=</a></div><div class="ttdeci">Vector&lt; Type, Size &gt; operator=(const Vector&lt; Type, Size &gt; &amp;v)</div><div class="ttdoc">Przeciążenie operatora przyrównania wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00250">vector.hh:250</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector</a></div><div class="ttdoc">Modeluje pojęcie wektora o dowolnym rozmiarze i typie danych, które on zawiera.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00023">vector.hh:23</a></div></div>
+<div class="ttc" id="avector_8hh_html_a8beb49beaa3fe317ed994b30fe7553f3"><div class="ttname"><a href="vector_8hh.html#a8beb49beaa3fe317ed994b30fe7553f3">operator&gt;&gt;</a></div><div class="ttdeci">std::istream &amp; operator&gt;&gt;(std::istream &amp;in, Vector&lt; double, SIZE &gt; &amp;tmp)</div><div class="ttdoc">Przeciążenie operatora przesunięcia bitowego w prawo dla wektora.</div><div class="ttdef"><b>Definition:</b> <a href="vector3_d_8cpp_source.html#l00030">vector3D.cpp:30</a></div></div>
+<div class="ttc" id="aclass_vector_html_af114f8c2828431bd4fab3ef5337e3e95"><div class="ttname"><a href="class_vector.html#af114f8c2828431bd4fab3ef5337e3e95">Vector::ActiveNumVectors</a></div><div class="ttdeci">static int ActiveNumVectors</div><div class="ttdoc">Liczba aktywych wektorów.</div><div class="ttdef"><b>Definition:</b> <a href="vector_8hh_source.html#l00035">vector.hh:35</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="vector_8hh.html">vector.hh</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+digraph "doctest::detail::ResultBuilder::log"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="doctest::detail::ResultBuilder::log",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="doctest::detail::failed\l_out_of_a_testing_context",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacedoctest_1_1detail.html#a0ff832be68bf666d856aefd539e1ce81",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="doctest::getContextOptions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacedoctest.html#a426c38f4b2561bf6cfb10a370bddc3da",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="doctest::detail::isDebugger\lActive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacedoctest_1_1detail.html#a013828c4e677241cc26aeea33f762710",tooltip=" "];
+}

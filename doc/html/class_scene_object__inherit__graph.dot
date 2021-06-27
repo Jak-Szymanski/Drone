@@ -1,0 +1,21 @@
+digraph "SceneObject"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="SceneObject",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Cuboid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html",tooltip="Modeluje pojęcie prostopadłościanu (będącym w tym programie korpusem dronu)"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Solid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_solid.html",tooltip="Modeluje pojęcie bryły geometycznej."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Drone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html",tooltip="Modeluje pojęcie dronu."];
+  Node4 -> Node5 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Scene",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_scene.html",tooltip="Modeluje pojecie sceny."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Flat",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_flat.html",tooltip="Modeluje pojęcie plaskowyzu."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Peak",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_peak.html",tooltip="Modeluje pojęcie gory ze szczytem."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Slope",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_slope.html",tooltip="Modeluje pojęcie gory z grania."];
+}
